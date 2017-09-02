@@ -1,4 +1,4 @@
-<layout id="WatchFace">
+<layout id="BavarianFenixWatchFace">
     <drawable class="Background" />
-    <label id="TimeLabel" x="center" y="center" font="Gfx.FONT_LARGE" justification="Gfx.TEXT_JUSTIFY_CENTER" color="Gfx.COLOR_BLUE" />
+    <label id="TimeLabel" font="Gfx.FONT_SYSTEM_LARGE" justification="Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER" color="Gfx.COLOR_BLUE" />
 </layout>

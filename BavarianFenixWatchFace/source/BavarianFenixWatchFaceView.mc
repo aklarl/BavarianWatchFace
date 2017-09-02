@@ -23,35 +23,29 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 		
 	private var minutesToText = {
 		0 => "umara",
-		1 => "fimf noch",
-		2 => "zehn noch",
-		3 => "viadl noch",
-		4 => "zwang noch",
-		5 => "fimf voa hoiba",
+		1 => "fimf" + "\n" + "noch",
+		2 => "zehn" + "\n" + "noch",
+		3 => "viadl" + "\n" + "noch",
+		4 => "zwang" + "\n" + "noch",
+		5 => "fimf" + "\n" + "voa hoiba",
 		6 => "hoiba",
-		7 => "fimf noch hoiba",
-		8 => "zwang voa",
+		7 => "fimf" + "\n" + "noch hoiba",
+		8 => "zwang" + "\n" + "voa",
 		9 => "dreiviadl",
-		10 => "zehn voa",
-		11 => "fimf voa"	
+		10 => "zehn" + "\n" + "voa",
+		11 => "fimf" + "\n" + "voa"	
 	};
 
     function initialize() {
         WatchFace.initialize();
     }
 
-    // Load your resources here
+    // load resources
     function onLayout(dc) {
-        setLayout(Rez.Layouts.WatchFace(dc));
+        setLayout(Rez.Layouts.BavarianFenixWatchFace(dc));
     }
 
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
-    function onShow() {
-    }
-
-    // Update the view
+    // update the view
     function onUpdate(dc) {
     		
 		// get the current time
@@ -70,27 +64,15 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
         // get text for minutes
         minutesOutput = minutesToText[ ( (minutes+2)%60 ) /5 ];
         
-        // Update the view
+        // get full text
+        var output = minutesOutput + "\n" + hoursOutput;
+        
+        // update the view
         var view = View.findDrawableById("TimeLabel");
-        view.setColor(App.getApp().getProperty("ForegroundColor"));
-        view.setText(minutesOutput + "\n" + hoursOutput);
+        view.setLocation(dc.getWidth()/2,dc.getHeight()/2);
+       	view.setText(output);
 
-        // Call the parent onUpdate function to redraw the layout
+        // call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
-
-    // Called when this View is removed from the screen. Save the
-    // state of this View here. This includes freeing resources from
-    // memory.
-    function onHide() {
-    }
-
-    // The user has just looked at their watch. Timers and animations may be started here.
-    function onExitSleep() {
-    }
-
-    // Terminate any active timers and prepare for slow updates.
-    function onEnterSleep() {
-    }
-
 }

@@ -1,0 +1,5 @@
+<fonts>
+	<font id="BavarianFontS" filename="Bauhaus-small.fnt"/>
+	<font id="BavarianFontM" filename="Bauhaus.fnt"/>
+	<font id="BavarianFontL" filename="Bauhaus-large.fnt"/>
+</fonts>

@@ -1,26 +1,26 @@
-using Toybox.WatchUi as Ui;
-using Toybox.Graphics as Gfx;
+using Toybox.WatchUi as WatchUi;
+using Toybox.Graphics as Graphics;
 using Toybox.System as Sys;
 using Toybox.Lang as Lang;
 using Toybox.Application as App;
 
-var fontS = Gfx.FONT_SMALL;
-var fontL = Gfx.FONT_LARGE;
+var fontS = Graphics.FONT_SMALL;
+var fontL = Graphics.FONT_LARGE;
 
-var justification = Gfx.TEXT_JUSTIFY_CENTER;
+var justification = Graphics.TEXT_JUSTIFY_CENTER;
 	
-var backgroundColor = Gfx.COLOR_BLACK;
-var minutesColor = Gfx.COLOR_WHITE;
-var hoursColor = Gfx.COLOR_RED;
+var backgroundColor = Graphics.COLOR_BLACK;
+var minutesColor = Graphics.COLOR_WHITE;
+var hoursColor = Graphics.COLOR_RED;
 	
 var dotRadius = 3;
 var dotDistance = 2*dotRadius + 10;
 var dotY = 30;
 
-var unactiveDotColor = Gfx.COLOR_WHITE;
-var activeDotColor = Gfx.COLOR_RED;
+var unactiveDotColor = Graphics.COLOR_WHITE;
+var activeDotColor = Graphics.COLOR_RED;
 
-class BavarianFenixWatchFaceView extends Ui.WatchFace {
+class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
 
 	var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
 	var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
@@ -132,34 +132,34 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 		}
 		
 		// set time
-		dc.setColor(minutesColor, Gfx.COLOR_TRANSPARENT);
+		dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
 		dc.drawText(me.xcenter, me.ycenter - offsetSeparator - offsetMinutes, fontS, minutesOutput, justification);
 		dc.drawText(me.xcenter, me.ycenter - offsetSeparator    , fontS, separatorOutput, justification);		
 	
-		dc.setColor(hoursColor, Gfx.COLOR_TRANSPARENT);		
+		dc.setColor(hoursColor, Graphics.COLOR_TRANSPARENT);		
 		dc.drawText(me.xcenter, me.ycenter - offsetSeparator + offsetHours, fontL, hoursOutput, justification);
 		
 		// set exact minutes
 		var minute = (minutes+2)%60 %5;
 		
-		if (minute == 0) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		if (minute == 0) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
 		dc.fillCircle(me.xcenter - 2*dotDistance, dotY, dotRadius);
 		
-		if (minute == 1) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
+		if (minute == 1) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); } 
 		dc.fillCircle(me.xcenter - dotDistance, dotY, dotRadius);
 		
-		if (minute == 2) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		if (minute == 2) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
 		dc.fillCircle(me.xcenter, dotY, dotRadius);
 		
-		if (minute == 3) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
+		if (minute == 3) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); } 
 		dc.fillCircle(me.xcenter + dotDistance, dotY, dotRadius);
 		
-		if (minute == 4) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		if (minute == 4) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
 		dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
     }
 }

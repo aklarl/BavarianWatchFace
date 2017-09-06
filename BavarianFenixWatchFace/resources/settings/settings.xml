@@ -8,26 +8,16 @@
 		</settingConfig>
 	</setting>
 
-    <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
+    <setting propertyKey="@Properties.HighlightColor" title="@Strings.HighlightColorTitle">
         <settingConfig type="list">
-            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
-            <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
-            <listEntry value="0xAAAAAA">@Strings.ColorLightGray</listEntry>
-            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
+            <listEntry value="1">@Strings.ColorRed</listEntry>
+            <listEntry value="2">@Strings.ColorDKRed</listEntry>
+            <listEntry value="3">@Strings.ColorBlue</listEntry>
+            <listEntry value="4">@Strings.ColorDKBlue</listEntry>
+            <listEntry value="5">@Strings.ColorGreen</listEntry>
+            <listEntry value="6">@Strings.ColorDKGreen</listEntry>
+            <listEntry value="7">@Strings.ColorWhite</listEntry>
         </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.ForegroundColor" title="@Strings.ForegroundColorTitle">
-        <settingConfig type="list">
-            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
-            <listEntry value="0x0000FF">@Strings.ColorBlue</listEntry>
-            <listEntry value="0xFF0000">@Strings.ColorRed</listEntry>
-            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
-        </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.UseMilitaryFormat" title="@Strings.MilitaryFormatTitle">
-        <settingConfig type="boolean" />
     </setting>
 
 </settings>

@@ -1,7 +1,8 @@
-using Toybox.Application as App;
-using Toybox.WatchUi as Ui;
+using Toybox.Application as Application;
+using Toybox.WatchUi as WatchUi;
+using Toybox.Graphics as Graphics;
 
-class BavarianFenixWatchFaceApp extends App.AppBase {
+class BavarianFenixWatchFaceApp extends Application.AppBase {
 
 	private var view;
 
@@ -26,24 +27,53 @@ class BavarianFenixWatchFaceApp extends App.AppBase {
     function onSettingsChanged() {
     	refreshSettings();
     	
-        Ui.requestUpdate();
+        WatchUi.requestUpdate();
     }
 
 	function refreshSettings() {
 		switch (Application.getApp().getProperty("Font")) {
 			case 1:
-				fontS = Ui.loadResource(Rez.Fonts.BauhausS);
-				fontL = Ui.loadResource(Rez.Fonts.BauhausL);
+				fontS = WatchUi.loadResource(Rez.Fonts.BauhausS);
+				fontL = WatchUi.loadResource(Rez.Fonts.BauhausL);
 				break;
 			case 2:
-				fontS = Ui.loadResource(Rez.Fonts.BritannicS);
-				fontL = Ui.loadResource(Rez.Fonts.BritannicL);
+				fontS = WatchUi.loadResource(Rez.Fonts.BritannicS);
+				fontL = WatchUi.loadResource(Rez.Fonts.BritannicL);
 				break;
 			case 3:
-				fontS = Ui.loadResource(Rez.Fonts.StencilS);
-				fontL = Ui.loadResource(Rez.Fonts.StencilL);
+				fontS = WatchUi.loadResource(Rez.Fonts.StencilS);
+				fontL = WatchUi.loadResource(Rez.Fonts.StencilL);
 				break;
 		}
+		
+		var color = null;
+		switch (Application.getApp().getProperty("HighlightColor")) {
+			case 1:
+				color = Graphics.COLOR_RED;
+				break;
+			case 2:
+				color = Graphics.COLOR_DK_RED;
+				break;
+			case 3:
+				color = Graphics.COLOR_BLUE;
+				break;
+			case 4:
+				color = Graphics.COLOR_DK_BLUE;
+				break;
+			case 5:
+				color = Graphics.COLOR_GREEN;
+				break;
+			case 6:
+				color = Graphics.COLOR_DK_GREEN;
+				break;
+			default:
+				color = Graphics.COLOR_WHITE;
+				break;
+		}
+		
+		// only set color of hours and of active dot to highlight color
+		hoursColor = color;
+		activeDotColor = color;
 	}
 
 }

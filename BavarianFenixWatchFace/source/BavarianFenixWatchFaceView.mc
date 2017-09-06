@@ -16,7 +16,7 @@ var hoursColor = Graphics.COLOR_RED;
 	
 var dotRadius = 3;
 var dotDistance = 2*dotRadius + 10;
-var dotY = 33;
+var dotY = 32;
 
 var unactiveDotColor = Graphics.COLOR_WHITE;
 var activeDotColor = Graphics.COLOR_RED;
@@ -106,7 +106,7 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
    		// set background color
 		dc.setColor(backgroundColor, backgroundColor);
 		dc.clear();
-
+	
 		// compute offsets for text
 		var ascentS = dc.getFontAscent(fontS);
 		var descentS = dc.getFontDescent(fontS);
@@ -123,8 +123,8 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
 		}
 		else {
 			offsetSeparator = 0;
-			offsetMinutes = ascentS + 3;
-			offsetHours = -descentL + 5;
+			offsetMinutes = ascentS + 4;
+			offsetHours = -descentL + 6;
 		}
 		
 		// set time

@@ -69,6 +69,15 @@ class BavarianFenixWatchFaceApp extends Application.AppBase {
 			case 6:
 				color = Graphics.COLOR_DK_GREEN;
 				break;
+			case 7:
+				color = Graphics.COLOR_ORANGE;
+				break;
+			case 8:
+				color = Graphics.COLOR_LT_GRAY;
+				break;
+			case 9:
+				color = Graphics.COLOR_DK_GRAY;
+				break;
 			default:
 				color = Graphics.COLOR_WHITE;
 				break;
@@ -77,6 +86,10 @@ class BavarianFenixWatchFaceApp extends Application.AppBase {
 		// only set color of hours and of active dot to highlight color
 		hoursColor = color;
 		activeDotColor = color;
+		
+		if (activeDotColor == Graphics.COLOR_LT_GRAY | activeDotColor == Graphics.COLOR_WHITE) {
+			activeDotColor = Graphics.COLOR_DK_GRAY;
+		}
 	}
 
 }

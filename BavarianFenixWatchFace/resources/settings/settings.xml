@@ -16,7 +16,10 @@
             <listEntry value="4">@Strings.ColorDKBlue</listEntry>
             <listEntry value="5">@Strings.ColorGreen</listEntry>
             <listEntry value="6">@Strings.ColorDKGreen</listEntry>
-            <listEntry value="7">@Strings.ColorWhite</listEntry>
+            <listEntry value="7">@Strings.ColorOrange</listEntry>
+            <listEntry value="8">@Strings.ColorLightGray</listEntry>
+            <listEntry value="9">@Strings.ColorDarkGray</listEntry>
+            <listEntry value="10">@Strings.ColorWhite</listEntry>
         </settingConfig>
     </setting>
 

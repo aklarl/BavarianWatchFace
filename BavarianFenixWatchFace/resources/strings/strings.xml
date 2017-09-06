@@ -2,19 +2,22 @@
 
     <string id="AppName">BavarianFenixWatchFace</string>
 
-    <string id="FontTitle">Font</string>
-    <string id="HighlightColorTitle">Highlight Color</string>
+    <string id="FontTitle">Schriftart</string>
+    <string id="HighlightColorTitle">Akzentfarbe</string>
 
 	<string id="Font1">Bauhaus93</string>
 	<string id="Font2">Britannic</string>
 	<string id="Font3">Stencil</string>
 	
-    <string id="ColorRed">Red</string>
-    <string id="ColorDKRed">Dark Red</string>
-    <string id="ColorBlue">Blue</string>
-    <string id="ColorDKBlue">Dark Blue</string>
-    <string id="ColorGreen">Green</string>
-    <string id="ColorDKGreen">Dark Green</string>
-    <string id="ColorWhite">White</string>
+    <string id="ColorRed">rot</string>
+    <string id="ColorDKRed">dunkelrot</string>
+    <string id="ColorBlue">blau</string>
+    <string id="ColorDKBlue">dunkelblau</string>
+    <string id="ColorGreen">grün</string>
+    <string id="ColorDKGreen">dunkelgrün</string>
+    <string id="ColorOrange">orange</string>
+    <string id="ColorLightGray">hellgrau</string>
+    <string id="ColorDarkGray">dunkelgrau</string>
+    <string id="ColorWhite">weiß</string>
     
 </strings>

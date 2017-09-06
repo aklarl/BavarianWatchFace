@@ -4,28 +4,27 @@ using Toybox.System as Sys;
 using Toybox.Lang as Lang;
 using Toybox.Application as App;
 
+var fontS = Gfx.FONT_SMALL;
+var fontL = Gfx.FONT_LARGE;
+
+var justification = Gfx.TEXT_JUSTIFY_CENTER;
+	
+var backgroundColor = Gfx.COLOR_BLACK;
+var minutesColor = Gfx.COLOR_WHITE;
+var hoursColor = Gfx.COLOR_RED;
+	
+var dotRadius = 3;
+var dotDistance = 2*dotRadius + 10;
+var dotY = 30;
+
+var unactiveDotColor = Gfx.COLOR_WHITE;
+var activeDotColor = Gfx.COLOR_RED;
+
 class BavarianFenixWatchFaceView extends Ui.WatchFace {
 
-	private var fontS = Gfx.FONT_SMALL;
-	private var fontM = Gfx.FONT_MEDIUM;
-	private var fontL = Gfx.FONT_LARGE;
+	var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
+	var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
 	
-	private var justification = Gfx.TEXT_JUSTIFY_CENTER;
-	
-	private var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
-	private var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
-	
-	private var backgroundColor = Gfx.COLOR_BLACK;
-	private var minutesColor = Gfx.COLOR_WHITE;
-	private var hoursColor = Gfx.COLOR_RED;
-	
-	private var dotRadius = 3;
-	private var dotDistance;
-	private var dotY = 30;
-	private var unactiveDotColor = Gfx.COLOR_WHITE;
-	private var activeDotColor = Gfx.COLOR_RED;
-	
-
 	private var hoursToText = { 
 		1 =>  "oans", 
 		2 =>  "zwoa", 
@@ -77,14 +76,10 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 
     // load resources
     function onLayout(dc) {
-        me.fontS = Ui.loadResource(Rez.Fonts.BavarianFontS);
-        me.fontM = Ui.loadResource(Rez.Fonts.BavarianFontM);
-        me.fontL = Ui.loadResource(Rez.Fonts.BavarianFontL);
-        
+    	BavarianFenixWatchFaceApp.refreshSettings();
+    
         me.xcenter = dc.getWidth()/2;
         me.ycenter = dc.getHeight()/2;
-		
-		me.dotDistance = 2*me.dotRadius + 10;
     }
 
     // update the view
@@ -108,7 +103,7 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
         hoursOutput = hoursOutput.toUpper();
         
    		// set background color
-		dc.setColor(me.backgroundColor, me.backgroundColor);
+		dc.setColor(backgroundColor, backgroundColor);
 		dc.clear();
 
 		//minutesOutput = minutesToText[9].toUpper();
@@ -117,9 +112,9 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 		//hoursOutput = hoursToText[0].toUpper();
 		
 		// compute offsets
-		var ascentS = dc.getFontAscent(me.fontS);
-		var descentS = dc.getFontDescent(me.fontS);
-		var descentL = dc.getFontDescent(me.fontL);
+		var ascentS = dc.getFontAscent(fontS);
+		var descentS = dc.getFontDescent(fontS);
+		var descentL = dc.getFontDescent(fontL);
 		var textHeightS = ascentS - descentS;
 		
 		var offsetSeparator = 0;
@@ -137,34 +132,34 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 		}
 		
 		// set time
-		dc.setColor(me.minutesColor, Gfx.COLOR_TRANSPARENT);
-		dc.drawText(me.xcenter, me.ycenter - offsetSeparator - offsetMinutes, me.fontS, minutesOutput, me.justification);
-		dc.drawText(me.xcenter, me.ycenter - offsetSeparator    , me.fontS, separatorOutput, me.justification);		
+		dc.setColor(minutesColor, Gfx.COLOR_TRANSPARENT);
+		dc.drawText(me.xcenter, me.ycenter - offsetSeparator - offsetMinutes, fontS, minutesOutput, justification);
+		dc.drawText(me.xcenter, me.ycenter - offsetSeparator    , fontS, separatorOutput, justification);		
 	
-		dc.setColor(me.hoursColor, Gfx.COLOR_TRANSPARENT);		
-		dc.drawText(me.xcenter, me.ycenter - offsetSeparator + offsetHours, me.fontL, hoursOutput, me.justification);
+		dc.setColor(hoursColor, Gfx.COLOR_TRANSPARENT);		
+		dc.drawText(me.xcenter, me.ycenter - offsetSeparator + offsetHours, fontL, hoursOutput, justification);
 		
 		// set exact minutes
 		var minute = (minutes+2)%60 %5;
 		
-		if (minute == 0) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
-		dc.fillCircle(me.xcenter - 2*me.dotDistance, me.dotY, me.dotRadius);
+		if (minute == 0) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		dc.fillCircle(me.xcenter - 2*dotDistance, dotY, dotRadius);
 		
-		if (minute == 1) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
-		dc.fillCircle(me.xcenter - me.dotDistance, me.dotY, me.dotRadius);
+		if (minute == 1) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
+		dc.fillCircle(me.xcenter - dotDistance, dotY, dotRadius);
 		
-		if (minute == 2) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
-		dc.fillCircle(me.xcenter, me.dotY, me.dotRadius);
+		if (minute == 2) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		dc.fillCircle(me.xcenter, dotY, dotRadius);
 		
-		if (minute == 3) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
-		dc.fillCircle(me.xcenter + me.dotDistance, me.dotY, me.dotRadius);
+		if (minute == 3) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
+		dc.fillCircle(me.xcenter + dotDistance, dotY, dotRadius);
 		
-		if (minute == 4) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
-		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
-		dc.fillCircle(me.xcenter + 2*me.dotDistance, me.dotY, me.dotRadius);
+		if (minute == 4) { dc.setColor(activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
     }
 }

@@ -9,11 +9,12 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 	private var fontS = Gfx.FONT_SMALL;
 	private var fontM = Gfx.FONT_MEDIUM;
 	private var fontL = Gfx.FONT_LARGE;
-	//private var justification = Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER;
 	private var justification = Gfx.TEXT_JUSTIFY_CENTER;
 	private var backgroundColor = Gfx.COLOR_BLACK;
 	private var minutesColor = Gfx.COLOR_WHITE;
 	private var hoursColor = Gfx.COLOR_RED;
+	private var unactiveDotColor = Gfx.COLOR_WHITE;
+	private var activeDotColor = Gfx.COLOR_RED;
 	
 
 	private var hoursToText = { 
@@ -134,5 +135,34 @@ class BavarianFenixWatchFaceView extends Ui.WatchFace {
 	
 		dc.setColor(me.hoursColor, Gfx.COLOR_TRANSPARENT);		
 		dc.drawText(dc.getWidth()/2, dc.getHeight()/2 - offset + offsetLower, me.fontL, hoursOutput, me.justification);
+		
+		// set minutes
+		dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT);
+		
+		var radius = 3;
+		var distance = 2*radius + 10;
+		var top = 30;
+		
+		var minute = (minutes+2)%60 %5;
+		
+		if (minute == 0) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		dc.fillCircle(dc.getWidth()/2 - 2*distance, top, radius);
+		
+		if (minute == 1) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
+		dc.fillCircle(dc.getWidth()/2 - 1*distance, top, radius);
+		
+		if (minute == 2) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		dc.fillCircle(dc.getWidth()/2, top, radius);
+		
+		if (minute == 3) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); } 
+		dc.fillCircle(dc.getWidth()/2 + 1*distance, top, radius);
+		
+		if (minute == 4) { dc.setColor(me.activeDotColor, Gfx.COLOR_TRANSPARENT); }
+		else { dc.setColor(me.unactiveDotColor, Gfx.COLOR_TRANSPARENT); }
+		dc.fillCircle(dc.getWidth()/2 + 2*distance, top, radius);
     }
 }

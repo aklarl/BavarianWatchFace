@@ -1,0 +1,25 @@
+Bavarian Watch Face
+-------------------
+This is a textual Watch Face for all Bavarians and those who want to impress Bavarians.
+
+The current time is shown in colloquial Bavarian phrases. 5 little signs at the top of the Watch Face reveal the exact minutes:
+- if the first minus sign is highlighted, it is 2 minutes before the time shown in Bavarian.
+- if the second minus sign is highlighted, it is 1 minute before the time shown in Bavarian.
+- if the dot sign is highlighted, it is exactly the time shown in Bavarian.
+- if the first plus sign is highlighted, it is 1 minute after the time shown in Bavarian.
+- if the second plus sign is highlighted, it is 2 minutes after the time shown in Bavarian.
+
+The Watch Face allows to switch between 3 fonts and 10 colors.
+
+Boarisches Watch Face
+---------------------
+Hier kommt ein Watch Face für alle Bayern und für solche, die es noch werden möchten.
+
+Die aktuelle Uhrzeit wird in umgangssprachlichen bayrischen Phrasen angezeigt. 5 kleine Zeichen am oberen Rand des Watch Face verraten die exakten Minuten:
+- Wird das erste Minuszeichen hervorgehoben, ist es 2 Minuten vor der angezeigten Zeit.
+- Wird das zweite Minuszeichen hervorgehoben, ist es 1 Minute vor der angezeigten Zeit.
+- Wird das Punktzeichen hervorgehoben, ist es genau die angezeigte Zeit.
+- Wird das erste Pluszeichen hervorgehoben, ist es 1 Minute nach der angezeigten Zeit.
+- Wird das zweite Pluszeichen hervorgehoben, ist es 2 Minuten nach der angezeigten Zeit.
+
+Das Watch Face gibt es in 3 Schriftarten und 10 Farben.

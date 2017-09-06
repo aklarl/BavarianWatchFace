@@ -106,7 +106,7 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
    		// set background color
 		dc.setColor(backgroundColor, backgroundColor);
 		dc.clear();
-	
+
 		// compute offsets for text
 		var ascentS = dc.getFontAscent(fontS);
 		var descentS = dc.getFontDescent(fontS);

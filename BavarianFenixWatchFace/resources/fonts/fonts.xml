@@ -3,6 +3,7 @@
 	<font id="BauhausL" filename="BauhausL.fnt" filter=" ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 	<font id="StencilS" filename="StencilS.fnt" filter=" ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 	<font id="StencilL" filename="StencilL.fnt" filter=" ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+	<font id="Signs" filename="StencilSigns.fnt" filter="+-"/>
 	<font id="BritannicS" filename="BritannicS.fnt" filter=" ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 	<font id="BritannicL" filename="BritannicL.fnt" filter=" ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 </fonts>

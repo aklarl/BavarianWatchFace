@@ -6,6 +6,7 @@ using Toybox.Application as App;
 
 var fontS = Graphics.FONT_SMALL;
 var fontL = Graphics.FONT_LARGE;
+var fontSigns = Graphics.FONT_TINY;
 
 var justification = Graphics.TEXT_JUSTIFY_CENTER;
 	
@@ -15,7 +16,7 @@ var hoursColor = Graphics.COLOR_RED;
 	
 var dotRadius = 3;
 var dotDistance = 2*dotRadius + 10;
-var dotY = 30;
+var dotY = 33;
 
 var unactiveDotColor = Graphics.COLOR_WHITE;
 var activeDotColor = Graphics.COLOR_RED;
@@ -106,12 +107,7 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
 		dc.setColor(backgroundColor, backgroundColor);
 		dc.clear();
 
-		//minutesOutput = minutesToText[9].toUpper();
-		//separatorOutput = minutesToSeparator[7].toUpper();
-		//separatorOutput = "";
-		//hoursOutput = hoursToText[0].toUpper();
-		
-		// compute offsets
+		// compute offsets for text
 		var ascentS = dc.getFontAscent(fontS);
 		var descentS = dc.getFontDescent(fontS);
 		var descentL = dc.getFontDescent(fontL);
@@ -141,14 +137,17 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
 		
 		// set exact minutes
 		var minute = (minutes+2)%60 %5;
+		var textY = dotY - dc.getFontDescent(fontSigns) - (dc.getFontAscent(fontSigns)-dc.getFontDescent(fontSigns))/2;
 		
 		if (minute == 0) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
 		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
-		dc.fillCircle(me.xcenter - 2*dotDistance, dotY, dotRadius);
+		dc.drawText(me.xcenter - 2*dotDistance, textY, fontSigns, "-", justification);
+		//dc.fillCircle(me.xcenter - 2*dotDistance, dotY, dotRadius);
 		
 		if (minute == 1) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); } 
-		dc.fillCircle(me.xcenter - dotDistance, dotY, dotRadius);
+		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
+		dc.drawText(me.xcenter - dotDistance, textY, fontSigns, "-", justification);
+		//dc.fillCircle(me.xcenter - dotDistance, dotY, dotRadius);
 		
 		if (minute == 2) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
 		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
@@ -156,10 +155,12 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
 		
 		if (minute == 3) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
 		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); } 
-		dc.fillCircle(me.xcenter + dotDistance, dotY, dotRadius);
+		dc.drawText(me.xcenter + dotDistance, textY, fontSigns, "+", justification);
+		//dc.fillCircle(me.xcenter + dotDistance, dotY, dotRadius);
 		
 		if (minute == 4) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
 		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
-		dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
+		dc.drawText(me.xcenter + 2*dotDistance, textY, fontSigns, "+", justification);
+		//dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
     }
 }

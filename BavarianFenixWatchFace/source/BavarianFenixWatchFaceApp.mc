@@ -35,14 +35,17 @@ class BavarianFenixWatchFaceApp extends Application.AppBase {
 			case 1:
 				fontS = WatchUi.loadResource(Rez.Fonts.BauhausS);
 				fontL = WatchUi.loadResource(Rez.Fonts.BauhausL);
+				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 			case 2:
 				fontS = WatchUi.loadResource(Rez.Fonts.BritannicS);
 				fontL = WatchUi.loadResource(Rez.Fonts.BritannicL);
+				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 			case 3:
 				fontS = WatchUi.loadResource(Rez.Fonts.StencilS);
 				fontL = WatchUi.loadResource(Rez.Fonts.StencilL);
+				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 		}
 		

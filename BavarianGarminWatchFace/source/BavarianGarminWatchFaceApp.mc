@@ -22,7 +22,7 @@ using Toybox.Application as Application;
 using Toybox.WatchUi as WatchUi;
 using Toybox.Graphics as Graphics;
 
-class BavarianFenixWatchFaceApp extends Application.AppBase {
+class BavarianGarminWatchFaceApp extends Application.AppBase {
 
 	private var view;
 
@@ -40,7 +40,7 @@ class BavarianFenixWatchFaceApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        return [ new BavarianFenixWatchFaceView() ];
+        return [ new BavarianGarminWatchFaceView() ];
     }
 
     // New app settings have been received so trigger a UI update

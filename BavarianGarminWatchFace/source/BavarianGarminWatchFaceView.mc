@@ -41,7 +41,7 @@ var dotY = 32;
 var unactiveDotColor = Graphics.COLOR_WHITE;
 var activeDotColor = Graphics.COLOR_RED;
 
-class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
+class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 
 	var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
 	var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
@@ -97,7 +97,7 @@ class BavarianFenixWatchFaceView extends WatchUi.WatchFace {
 
     // load resources
     function onLayout(dc) {
-    	BavarianFenixWatchFaceApp.refreshSettings();
+    	BavarianGarminWatchFaceApp.refreshSettings();
     
         me.xcenter = dc.getWidth()/2;
         me.ycenter = dc.getHeight()/2;

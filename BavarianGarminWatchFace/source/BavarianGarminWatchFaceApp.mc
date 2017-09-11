@@ -21,6 +21,7 @@
 using Toybox.Application as Application;
 using Toybox.WatchUi as WatchUi;
 using Toybox.Graphics as Graphics;
+using Toybox.Lang as Lang;
 
 class BavarianGarminWatchFaceApp extends Application.AppBase {
 
@@ -45,13 +46,13 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 
     // New app settings have been received so trigger a UI update
     function onSettingsChanged() {
-    	refreshSettings();
+    	BavarianGarminWatchFaceApp.refreshSettings();
     	
         WatchUi.requestUpdate();
     }
 
-	function refreshSettings() {
-		switch (Application.getApp().getProperty("Font")) {
+	static function refreshSettings() {
+		switch (getNumberProperty("Font",2)) {
 			case 1:
 				fontS = WatchUi.loadResource(Rez.Fonts.BauhausS);
 				fontL = WatchUi.loadResource(Rez.Fonts.BauhausL);
@@ -67,10 +68,15 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 				fontL = WatchUi.loadResource(Rez.Fonts.StencilL);
 				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
+			default:
+				fontS = WatchUi.loadResource(Rez.Fonts.BritannicS);
+				fontL = WatchUi.loadResource(Rez.Fonts.BritannicL);
+				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
+				break;
 		}
 		
 		var color = null;
-		switch (Application.getApp().getProperty("HighlightColor")) {
+		switch (getNumberProperty("HighlightColor",1)) {
 			case 1:
 				color = Graphics.COLOR_RED;
 				break;
@@ -110,6 +116,22 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 		if (activeDotColor == Graphics.COLOR_LT_GRAY | activeDotColor == Graphics.COLOR_WHITE) {
 			activeDotColor = Graphics.COLOR_DK_GRAY;
 		}
+	}
+	
+	static function getNumberProperty(property, defaultValue) {
+		var value = Application.getApp().getProperty(property);
+		if (value != null) {
+			if (value instanceof Lang.Number) {
+				return value;
+			}
+			else if (value instanceof Lang.String
+					|| value instanceof Lang.Double
+					|| value instanceof Lang.Float
+					|| value instanceof Lang.Long) {
+				return value.toNumber();
+			}
+		}
+		return defaultValue;
 	}
 
 }

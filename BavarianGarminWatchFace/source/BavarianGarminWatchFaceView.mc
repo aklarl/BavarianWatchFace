@@ -45,51 +45,22 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 
 	var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
 	var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
-	
-	private var hoursToText = { 
-		1 =>  "oans", 
-		2 =>  "zwoa", 
-		3 =>  "drei", 
-		4 =>  "viere",
-		5 =>  "fimfe",
-		6 =>  "sechse",
-		7 =>  "simme",
-		8 =>  "ochde",
-		9 =>  "neine",
-		10 => "zehne",
-		11 => "eife",
-		0 =>  "zweife"
-	};
-	
-	private var minutesToSeparator = {
-		0 => "",
-		1 => "noch",
-		2 => "noch",
-		3 => "noch",
-		4 => "noch",
-		5 => "voa hoiba",
-		6 => "",
-		7 => "noch hoiba",
-		8 => "voa",
-		9 => "",
-		10 => "voa",
-		11 => "voa"	
-	};
-		
-	private var minutesToText = {
-		0 =>  "umara",
-		1 =>  "fimf",
-		2 =>  "zehn",
-		3 =>  "viadl",
-		4 =>  "zwanzg",
-		5 =>  "fimf",
-		6 =>  "hoiba",
-		7 =>  "fimf",
-		8 =>  "zwanzg",
-		9 =>  "dreiviadl",
-		10 => "zehn",
-		11 => "fimf"	
-	};
+
+	static function getStringProperty(property) {
+		var value = Application.getApp().getProperty(property);
+		if (value != null) {
+			if (value instanceof Lang.String) {
+				return value;
+			}
+			else if (value instanceof Lang.Number
+					|| value instanceof Lang.Double
+					|| value instanceof Lang.Float
+					|| value instanceof Lang.Long) {
+				return value.toString();
+			}
+		}
+		return "";
+	}
 
     function initialize() {
         WatchFace.initialize();
@@ -112,15 +83,15 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 	    var minutes = clockTime.min;
 	    
         // get text for minutes
-        var minutesOutput = minutesToText[ ( (minutes+2)%60 ) /5 ].toUpper();
+        var minutesOutput = getStringProperty("Minute" + ( (minutes+2)%60 ) /5 ).toUpper();
         
         // get text for separator
-        var separatorOutput = minutesToSeparator[ ( (minutes+2)%60 ) /5 ].toUpper();
+        var separatorOutput = getStringProperty("Separator" + ( (minutes+2)%60 ) /5 ).toUpper();
         
         // get text for hours        
 	    var hoursOutput = "";
-        if (minutes <= 22) { hoursOutput = hoursToText[hours % 12]; }
-        else { hoursOutput = hoursToText[(hours + 1) % 12]; }
+        if (minutes <= 22) { hoursOutput = getStringProperty("Hour" + hours % 12); }
+        else { hoursOutput = getStringProperty("Hour" + (hours + 1) % 12); }
         hoursOutput = hoursOutput.toUpper();
         
    		// set background color

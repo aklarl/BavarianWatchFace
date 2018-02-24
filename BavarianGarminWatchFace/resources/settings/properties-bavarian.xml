@@ -1,0 +1,42 @@
+<properties>
+    
+    <property id="Hour0" type="string">zweife</property>
+    <property id="Hour1" type="string">oans</property>
+    <property id="Hour2" type="string">zwoa</property>
+    <property id="Hour3" type="string">drei</property>
+    <property id="Hour4" type="string">viere</property>
+    <property id="Hour5" type="string">fimfe</property>
+    <property id="Hour6" type="string">sechse</property>
+    <property id="Hour7" type="string">simme</property>
+    <property id="Hour8" type="string">ochde</property>
+    <property id="Hour9" type="string">neine</property>
+    <property id="Hour10" type="string">zehne</property>
+    <property id="Hour11" type="string">eife</property>
+
+    <property id="Separator0" type="string"></property>
+    <property id="Separator1" type="string">noch</property>
+    <property id="Separator2" type="string">noch</property>
+    <property id="Separator3" type="string">noch</property>
+    <property id="Separator4" type="string">noch</property>
+    <property id="Separator5" type="string">voia hoiba</property>
+    <property id="Separator6" type="string"></property>
+    <property id="Separator7" type="string">noch hoiba</property>
+    <property id="Separator8" type="string">voa</property>
+    <property id="Separator9" type="string"></property>
+    <property id="Separator10" type="string">voa</property>
+    <property id="Separator11" type="string">voa</property>
+    
+    <property id="Minute0" type="string">umara</property>
+    <property id="Minute1" type="string">fimf</property>
+    <property id="Minute2" type="string">zehn</property>
+    <property id="Minute3" type="string">viadl</property>
+    <property id="Minute4" type="string">zwanzg</property>
+    <property id="Minute5" type="string">fimf</property>
+    <property id="Minute6" type="string">hoiba</property>
+    <property id="Minute7" type="string">fimf</property>
+    <property id="Minute8" type="string">zwanzg</property>
+    <property id="Minute9" type="string">dreiviadl</property>
+    <property id="Minute10" type="string">zehn</property>
+    <property id="Minute11" type="string">fimf</property>
+
+</properties>

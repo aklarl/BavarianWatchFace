@@ -76,8 +76,8 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 		var offsetHours = 0;
 		if (!separatorOutput.equals("")) {
 			offsetSeparator = descentS + textHeightS/2;
-			offsetMinutes = textHeightS + 6;
-			offsetHours = ascentS - descentL + 10;
+			offsetMinutes = textHeightS + 10;
+			offsetHours = ascentS - descentL + 14;
 		}
 		else {
 			offsetSeparator = 0;

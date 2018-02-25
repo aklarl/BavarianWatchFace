@@ -39,8 +39,8 @@ var minutesToSeparatorKaernten = {
 	0 => "",
 	1 => "noch",
 	2 => "noch",
-	3 => "", //Achtung
-	4 => "vuar holba", //Achtung
+	3 => "",
+	4 => "vuar holba",
 	5 => "vuar holba",
 	6 => "",
 	7 => "noch holba",
@@ -51,7 +51,7 @@ var minutesToSeparatorKaernten = {
 };
 	
 var minutesToTextKaernten = {
-	0 =>  "umara",
+	0 =>  "",
 	1 =>  "fünf",
 	2 =>  "zehn",
 	3 =>  "viertl",

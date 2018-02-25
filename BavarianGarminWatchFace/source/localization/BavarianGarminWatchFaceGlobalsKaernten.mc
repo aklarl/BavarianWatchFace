@@ -51,7 +51,7 @@ var minutesToSeparatorKaernten = {
 };
 	
 var minutesToTextKaernten = {
-	0 =>  "umara",
+	0 =>  "",
 	1 =>  "fünf",
 	2 =>  "zehn",
 	3 =>  "viertl",

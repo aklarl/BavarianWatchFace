@@ -2,8 +2,12 @@
 
     <string id="AppName">BoarischesWatchFace</string>
 
+    <string id="LanguageTitle">Sprache</string>
     <string id="FontTitle">Schriftart</string>
     <string id="HighlightColorTitle">Akzentfarbe</string>
+
+	<string id="Bayern">Boarisch</string>
+	<string id="Kaernten">Kärtnerisch</string>
 
 	<string id="Font1">Bauhaus93</string>
 	<string id="Font2">Britannic</string>

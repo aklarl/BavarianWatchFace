@@ -1,7 +1,7 @@
 /*
  *  BoarischesWatchFace is a Watch Face for a large set of Garmin smart watches.
  *
- *  Copyright (C) 2017  Annabelle Klarl
+ *  Copyright (C) 2018  Annabelle Klarl
  *  All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,43 +24,10 @@ using Toybox.System as Sys;
 using Toybox.Lang as Lang;
 using Toybox.Application as App;
 
-var fontS = Graphics.FONT_SMALL;
-var fontL = Graphics.FONT_LARGE;
-var fontSigns = Graphics.FONT_TINY;
-
-var justification = Graphics.TEXT_JUSTIFY_CENTER;
-	
-var backgroundColor = Graphics.COLOR_BLACK;
-var minutesColor = Graphics.COLOR_WHITE;
-var hoursColor = Graphics.COLOR_RED;
-	
-var dotRadius = 3;
-var dotDistance = 2*dotRadius + 10;
-var dotY = 32;
-
-var unactiveDotColor = Graphics.COLOR_WHITE;
-var activeDotColor = Graphics.COLOR_RED;
-
 class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 
 	var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
 	var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
-
-	static function getStringProperty(property) {
-		var value = Application.getApp().getProperty(property);
-		if (value != null) {
-			if (value instanceof Lang.String) {
-				return value;
-			}
-			else if (value instanceof Lang.Number
-					|| value instanceof Lang.Double
-					|| value instanceof Lang.Float
-					|| value instanceof Lang.Long) {
-				return value.toString();
-			}
-		}
-		return "";
-	}
 
     function initialize() {
         WatchFace.initialize();
@@ -76,22 +43,26 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 
     // update the view
     function onUpdate(dc) {
-    		
+    
 		// get the current time
         var clockTime = Sys.getClockTime();
        	var hours = clockTime.hour;
 	    var minutes = clockTime.min;
 	    
+	    //TODO
+	    hours = 2;
+	    minutes = 12;
+	    
         // get text for minutes
-        var minutesOutput = getStringProperty("Minute" + ( (minutes+2)%60 ) /5 ).toUpper();
+        var minutesOutput = minutesToText[ ( (minutes+2)%60 ) /5 ].toUpper();
         
         // get text for separator
-        var separatorOutput = getStringProperty("Separator" + ( (minutes+2)%60 ) /5 ).toUpper();
+        var separatorOutput = minutesToSeparator[ ( (minutes+2)%60 ) /5 ].toUpper();
         
         // get text for hours        
 	    var hoursOutput = "";
-        if (minutes <= 22) { hoursOutput = getStringProperty("Hour" + hours % 12); }
-        else { hoursOutput = getStringProperty("Hour" + (hours + 1) % 12); }
+        if (minutes < minutesWhenToJumpToNextHour) { hoursOutput = hoursToText[hours % 12]; }
+        else { hoursOutput = hoursToText[(hours + 1) % 12]; }
         hoursOutput = hoursOutput.toUpper();
         
    		// set background color
@@ -117,7 +88,7 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 			offsetMinutes = ascentS + 4;
 			offsetHours = -descentL + 6;
 		}
-		
+	
 		// set time
 		dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
 		dc.drawText(me.xcenter, me.ycenter - offsetSeparator - offsetMinutes, fontS, minutesOutput, justification);

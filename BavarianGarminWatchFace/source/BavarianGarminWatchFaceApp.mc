@@ -1,7 +1,7 @@
 /*
  *  BoarischesWatchFace is a Watch Face for a large set of Garmin smart watches.
  *
- *  Copyright (C) 2017  Annabelle Klarl
+ *  Copyright (C) 2018  Annabelle Klarl
  *  All rights reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +22,7 @@ using Toybox.Application as Application;
 using Toybox.WatchUi as WatchUi;
 using Toybox.Graphics as Graphics;
 using Toybox.Lang as Lang;
+using Toybox.System as System;
 
 class BavarianGarminWatchFaceApp extends Application.AppBase {
 
@@ -52,6 +53,23 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
     }
 
 	static function refreshSettings() {
+		// refresh language
+		switch (getNumberProperty("Language",1)) {
+			case 1:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourBayern;
+				hoursToText = hoursToTextBayern;
+				minutesToSeparator = minutesToSeparatorBayern;
+				minutesToText = minutesToTextBayern;
+				break;
+			case 2:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourKaernten;
+				hoursToText = hoursToTextKaernten;
+				minutesToSeparator = minutesToSeparatorKaernten;
+				minutesToText = minutesToTextKaernten;
+				break;
+		}
+	
+		// refresh font
 		switch (getNumberProperty("Font",2)) {
 			case 1:
 				fontS = WatchUi.loadResource(Rez.Fonts.BauhausS);
@@ -75,6 +93,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 				break;
 		}
 		
+		// refresh color
 		var color = null;
 		switch (getNumberProperty("HighlightColor",1)) {
 			case 1:
@@ -117,8 +136,8 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 			activeDotColor = Graphics.COLOR_DK_GRAY;
 		}
 	}
-	
-	static function getNumberProperty(property, defaultValue) {
+
+	private static function getNumberProperty(property, defaultValue) {
 		var value = Application.getApp().getProperty(property);
 		if (value != null) {
 			if (value instanceof Lang.Number) {
@@ -133,5 +152,4 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 		}
 		return defaultValue;
 	}
-
 }

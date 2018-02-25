@@ -1,5 +1,12 @@
 <settings>
 
+    <setting propertyKey="@Properties.Language" title="@Strings.LanguageTitle">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.Bayern</listEntry>
+            <listEntry value="2">@Strings.Kaernten</listEntry>
+        </settingConfig>
+    </setting>
+
 	<setting propertyKey="@Properties.Font" title="@Strings.FontTitle">
 		<settingConfig type="list">
 			<listEntry value="1">@Strings.Font1</listEntry>
@@ -22,5 +29,4 @@
             <listEntry value="10">@Strings.ColorWhite</listEntry>
         </settingConfig>
     </setting>
-
 </settings>

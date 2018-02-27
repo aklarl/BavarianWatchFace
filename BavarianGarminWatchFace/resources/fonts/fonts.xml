@@ -1,9 +1,12 @@
 <fonts>
 	<font id="BauhausS" filename="BauhausS.fnt"/>
 	<font id="BauhausL" filename="BauhausL.fnt"/>
+	<font id="BauhausNumbers" filename="BauhausNumbers.fnt"/>
 	<font id="StencilS" filename="StencilS.fnt"/>
 	<font id="StencilL" filename="StencilL.fnt"/>
+	<font id="StencilNumbers" filename="StencilNumbers.fnt"/>
 	<font id="Signs" filename="StencilSigns.fnt" filter="+-"/>
 	<font id="BritannicS" filename="BritannicS.fnt"/>
 	<font id="BritannicL" filename="BritannicL.fnt"/>
+	<font id="BritannicNumbers" filename="BritannicNumbers.fnt"/>
 </fonts>

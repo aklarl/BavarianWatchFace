@@ -68,27 +68,34 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 				minutesToText = minutesToTextKaernten;
 				break;
 		}
+		
+		// refresh date
+		showDate = getBooleanProperty("Date",false);
 	
 		// refresh font
 		switch (getNumberProperty("Font",2)) {
 			case 1:
 				fontS = WatchUi.loadResource(Rez.Fonts.BauhausS);
 				fontL = WatchUi.loadResource(Rez.Fonts.BauhausL);
+				fontNumbers = WatchUi.loadResource(Rez.Fonts.BauhausNumbers);
 				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 			case 2:
 				fontS = WatchUi.loadResource(Rez.Fonts.BritannicS);
 				fontL = WatchUi.loadResource(Rez.Fonts.BritannicL);
+				fontNumbers = WatchUi.loadResource(Rez.Fonts.BritannicNumbers);
 				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 			case 3:
 				fontS = WatchUi.loadResource(Rez.Fonts.StencilS);
 				fontL = WatchUi.loadResource(Rez.Fonts.StencilL);
+				fontNumbers = WatchUi.loadResource(Rez.Fonts.StencilNumbers);
 				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 			default:
 				fontS = WatchUi.loadResource(Rez.Fonts.BritannicS);
 				fontL = WatchUi.loadResource(Rez.Fonts.BritannicL);
+				fontNumbers = WatchUi.loadResource(Rez.Fonts.BritannicNumbers);
 				fontSigns = WatchUi.loadResource(Rez.Fonts.Signs);
 				break;
 		}
@@ -148,6 +155,23 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 					|| value instanceof Lang.Float
 					|| value instanceof Lang.Long) {
 				return value.toNumber();
+			}
+		}
+		return defaultValue;
+	}
+	
+	private static function getBooleanProperty(property, defaultValue) {
+		var value = Application.getApp().getProperty(property);
+		if (value != null) {
+			if (value instanceof Lang.Boolean) {
+				return value;
+			}
+			else if (value instanceof Lang.String
+					|| value instanceof Lang.Number
+					|| value instanceof Lang.Double
+					|| value instanceof Lang.Float
+					|| value instanceof Lang.Long) {
+				return value.toBoolean();
 			}
 		}
 		return defaultValue;

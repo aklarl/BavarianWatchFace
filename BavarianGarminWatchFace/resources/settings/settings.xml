@@ -6,6 +6,10 @@
             <listEntry value="2">@Strings.Kaernten</listEntry>
         </settingConfig>
     </setting>
+    
+    <setting propertyKey="@Properties.Date" title="@Strings.DateTitle">
+    	<settingConfig type="boolean"/>
+    </setting>
 
 	<setting propertyKey="@Properties.Font" title="@Strings.FontTitle">
 		<settingConfig type="list">

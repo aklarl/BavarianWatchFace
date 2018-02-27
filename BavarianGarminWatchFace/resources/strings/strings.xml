@@ -3,6 +3,7 @@
     <string id="AppName">BoarischesWatchFace</string>
 
     <string id="LanguageTitle">Sprache</string>
+    <string id="DateTitle">Datumsanzeige</string>
     <string id="FontTitle">Schriftart</string>
     <string id="HighlightColorTitle">Akzentfarbe</string>
 

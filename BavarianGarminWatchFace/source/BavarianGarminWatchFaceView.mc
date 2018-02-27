@@ -23,6 +23,7 @@ using Toybox.Graphics as Graphics;
 using Toybox.System as Sys;
 using Toybox.Lang as Lang;
 using Toybox.Application as App;
+using Toybox.Time as Time;
 
 class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 
@@ -45,9 +46,16 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
     function onUpdate(dc) {
     
 		// get the current time
-        var clockTime = Sys.getClockTime();
-       	var hours = clockTime.hour;
-	    var minutes = clockTime.min;
+        var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+       	var hours = today.hour;
+	    var minutes = today.min;
+
+	    // get date
+	    //var dateOutput = today.day + "." + today.month + "." + today.year;
+	    var dateOutput = Lang.format(
+				"$1$.$2$.$3$",
+				[today.day.format("%02d"), today.month.format("%02d"), (today.year % 100).format("%02d")]
+			);
 	    
         // get text for minutes
         var minutesOutput = minutesToText[ ( (minutes+2)%60 ) /5 ].toUpper();
@@ -120,5 +128,12 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
 		dc.drawText(me.xcenter + 2*dotDistance, textY, fontSigns, "+", justification);
 		//dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
+		
+		// set date
+		if (showDate) {
+			var dateY = dc.getHeight() - dotY - dc.getFontDescent(fontNumbers); 
+			dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
+			dc.drawText(me.xcenter, dateY, fontNumbers, dateOutput, justification);
+		}
     }
 }

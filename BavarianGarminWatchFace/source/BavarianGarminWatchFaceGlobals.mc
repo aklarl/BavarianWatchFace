@@ -68,10 +68,14 @@ var minutesToText = {
 	11 => "fünf"	
 };
 
+// date variables
+var showDate = false;
+
 // font variables 
 var fontS = Graphics.FONT_SMALL;
 var fontL = Graphics.FONT_LARGE;
 var fontSigns = Graphics.FONT_TINY;
+var fontNumbers = Graphics.FONT_XTINY;
 
 // color variables
 var backgroundColor = Graphics.COLOR_BLACK;

@@ -51,7 +51,6 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 	    var minutes = today.min;
 
 	    // get date
-	    //var dateOutput = today.day + "." + today.month + "." + today.year;
 	    var dateOutput = Lang.format(
 				"$1$.$2$.$3$",
 				[today.day.format("%02d"), today.month.format("%02d"), (today.year % 100).format("%02d")]

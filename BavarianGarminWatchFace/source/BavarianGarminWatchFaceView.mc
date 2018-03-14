@@ -101,6 +101,7 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 		dc.drawText(me.xcenter, me.ycenter - offsetSeparator + offsetHours, fontL, hoursOutput, justification);
 		
 		// set exact minutes
+		dotY = dc.getHeight() * 0.13;
 		var minute = (minutes+2)%60 %5;
 		var textY = dotY - dc.getFontDescent(fontSigns) - (dc.getFontAscent(fontSigns)-dc.getFontDescent(fontSigns))/2;
 		
@@ -130,7 +131,10 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 		
 		// set date
 		if (showDate) {
-			var dateY = dc.getHeight() - dotY - dc.getFontDescent(fontNumbers); 
+			var dateY = dc.getHeight() - dotY - (dc.getFontAscent(fontNumbers)-dc.getFontDescent(fontNumbers))/2;
+			if (dateY - (me.ycenter - offsetSeparator + offsetHours) < 56) { 
+				dateY = (me.ycenter - offsetSeparator + offsetHours) + 56;
+			}
 			dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
 			dc.drawText(me.xcenter, dateY, fontNumbers, dateOutput, justification);
 		}

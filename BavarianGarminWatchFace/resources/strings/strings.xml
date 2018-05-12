@@ -8,7 +8,11 @@
     <string id="HighlightColorTitle">Akzentfarbe</string>
 
 	<string id="Bayern">Boarisch</string>
+	<string id="Oberfranken">Oberfrängisch</string>
 	<string id="Kaernten">Kärtnerisch</string>
+	<string id="SchweizZurich">Schweizerisch (Zürich)</string>
+	<string id="SchweizOlten">Schweizerisch (Olten)</string>
+	<string id="Hochdeutsch">Hochdeutsch</string>
 
 	<string id="Font1">Bauhaus93</string>
 	<string id="Font2">Britannic</string>

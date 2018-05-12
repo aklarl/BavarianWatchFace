@@ -18,49 +18,49 @@
  *
  */
 
-var minutesWhenToJumpToNextHourKaernten = 13;
+var minutesWhenToJumpToNextHourSchweizOlten = 23;
 
-var hoursToTextKaernten = { 
-	1 =>  "ans", 
-	2 =>  "zwa", 
-	3 =>  "dreie", 
-	4 =>  "viere",
-	5 =>  "fünfe",
-	6 =>  "sechse",
-	7 =>  "siebene", // 7 characters
-	8 =>  "åchte",
-	9 =>  "neine",
-	10 => "zehne",
-	11 => "elfe",
-	0 =>  "zwölfe"
+var hoursToTextSchweizOlten = { 
+	1 =>  "eis", 
+	2 =>  "zwöi", 
+	3 =>  "drü", 
+	4 =>  "viäri",
+	5 =>  "föifi",
+	6 =>  "sächsi", // 6 characters
+	7 =>  "sebni", 
+	8 =>  "achti",
+	9 =>  "nüni",
+	10 => "zähni",
+	11 => "öufi",
+	0 =>  "zwöufi"
 };
 
-var minutesToSeparatorKaernten = {
+var minutesToSeparatorSchweizOlten = {
 	0 => "",
-	1 => "nåch",
-	2 => "nåch",
-	3 => "",
-	4 => "vuar hålba",
-	5 => "vuar hålba",
+	1 => "ab",
+	2 => "ab",
+	3 => "ab",
+	4 => "ab",
+	5 => "vor haubi", // 9 characters
 	6 => "",
-	7 => "nåch hålba", // 10 characters
-	8 => "nåch hålba",
-	9 => "",
-	10 => "vuar",
-	11 => "vuar"	
+	7 => "ab haubi",
+	8 => "vor",
+	9 => "vor",
+	10 => "vor",
+	11 => "vor"	
 };
 	
-var minutesToTextKaernten = {
+var minutesToTextSchweizOlten = {
 	0 =>  "",
-	1 =>  "fünf",
-	2 =>  "zehn",
-	3 =>  "viertl", // line 3: 6 characters
-	4 =>  "zehn",
-	5 =>  "fünf",
-	6 =>  "hålba",
-	7 =>  "fünf",
-	8 =>  "zehn",
-	9 =>  "dreiviertl", // line 2: 10 characters
-	10 => "zehn",
-	11 => "fünf"	
+	1 =>  "föif",
+	2 =>  "zäh",
+	3 =>  "viertu", // line 3: 6 characters
+	4 =>  "zwänzg",
+	5 =>  "föif",
+	6 =>  "haubi", // line 2: 5 characters
+	7 =>  "föif",
+	8 =>  "zwänzg",
+	9 =>  "viertu",
+	10 => "zäh",
+	11 => "föif"	
 };

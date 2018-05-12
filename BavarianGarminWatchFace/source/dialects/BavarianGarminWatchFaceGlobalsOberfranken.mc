@@ -18,49 +18,49 @@
  *
  */
 
-var minutesWhenToJumpToNextHourKaernten = 13;
+var minutesWhenToJumpToNextHourOberfranken = 13;
 
-var hoursToTextKaernten = { 
-	1 =>  "ans", 
-	2 =>  "zwa", 
-	3 =>  "dreie", 
-	4 =>  "viere",
-	5 =>  "fünfe",
-	6 =>  "sechse",
-	7 =>  "siebene", // 7 characters
-	8 =>  "åchte",
-	9 =>  "neine",
-	10 => "zehne",
-	11 => "elfe",
-	0 =>  "zwölfe"
+var hoursToTextOberfranken = { 
+	1 =>  "aans", 
+	2 =>  "zwaa", 
+	3 =>  "dreia", 
+	4 =>  "viera",
+	5 =>  "fimfa",
+	6 =>  "sechsa", // 6 characters
+	7 =>  "siema", 
+	8 =>  "ochda",
+	9 =>  "neina",
+	10 => "zehna",
+	11 => "elfa",
+	0 =>  "zwelfa"
 };
 
-var minutesToSeparatorKaernten = {
+var minutesToSeparatorOberfranken = {
 	0 => "",
-	1 => "nåch",
-	2 => "nåch",
+	1 => "noch",
+	2 => "noch",
 	3 => "",
-	4 => "vuar hålba",
-	5 => "vuar hålba",
+	4 => "voa holba",
+	5 => "voa holba",
 	6 => "",
-	7 => "nåch hålba", // 10 characters
-	8 => "nåch hålba",
+	7 => "noch holba", // 10 characters
+	8 => "noch holba",
 	9 => "",
-	10 => "vuar",
-	11 => "vuar"	
+	10 => "voa",
+	11 => "voa"	
 };
 	
-var minutesToTextKaernten = {
+var minutesToTextOberfranken = {
 	0 =>  "",
-	1 =>  "fünf",
+	1 =>  "fimf", // line 3: 4 characters
 	2 =>  "zehn",
-	3 =>  "viertl", // line 3: 6 characters
+	3 =>  "värddl",
 	4 =>  "zehn",
-	5 =>  "fünf",
-	6 =>  "hålba",
-	7 =>  "fünf",
+	5 =>  "fimf",
+	6 =>  "holba",
+	7 =>  "fimf",
 	8 =>  "zehn",
-	9 =>  "dreiviertl", // line 2: 10 characters
+	9 =>  "dreivärddl", // line 2: 10 characters
 	10 => "zehn",
-	11 => "fünf"	
+	11 => "fimf"	
 };

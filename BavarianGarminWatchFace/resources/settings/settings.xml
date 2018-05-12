@@ -3,7 +3,11 @@
     <setting propertyKey="@Properties.Language" title="@Strings.LanguageTitle">
         <settingConfig type="list">
             <listEntry value="1">@Strings.Bayern</listEntry>
-            <listEntry value="2">@Strings.Kaernten</listEntry>
+            <listEntry value="2">@Strings.Oberfranken</listEntry>
+            <listEntry value="3">@Strings.Kaernten</listEntry>
+            <listEntry value="4">@Strings.SchweizZurich</listEntry>
+            <listEntry value="5">@Strings.SchweizOlten</listEntry>
+            <listEntry value="0">@Strings.Hochdeutsch</listEntry>
         </settingConfig>
     </setting>
     

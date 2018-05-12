@@ -55,6 +55,12 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 	static function refreshSettings() {
 		// refresh language
 		switch (getNumberProperty("Language",1)) {
+			case 0:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourHochdeutsch;
+				hoursToText = hoursToTextHochdeutsch;
+				minutesToSeparator = minutesToSeparatorHochdeutsch;
+				minutesToText = minutesToTextHochdeutsch;
+				break;
 			case 1:
 				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourBayern;
 				hoursToText = hoursToTextBayern;
@@ -62,10 +68,28 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 				minutesToText = minutesToTextBayern;
 				break;
 			case 2:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourOberfranken;
+				hoursToText = hoursToTextOberfranken;
+				minutesToSeparator = minutesToSeparatorOberfranken;
+				minutesToText = minutesToTextOberfranken;
+				break;
+			case 3:
 				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourKaernten;
 				hoursToText = hoursToTextKaernten;
 				minutesToSeparator = minutesToSeparatorKaernten;
 				minutesToText = minutesToTextKaernten;
+				break;
+			case 4:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourSchweizZurich;
+				hoursToText = hoursToTextSchweizZurich;
+				minutesToSeparator = minutesToSeparatorSchweizZurich;
+				minutesToText = minutesToTextSchweizZurich;
+				break;
+			case 5:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourSchweizOlten;
+				hoursToText = hoursToTextSchweizOlten;
+				minutesToSeparator = minutesToSeparatorSchweizOlten;
+				minutesToText = minutesToTextSchweizOlten;
 				break;
 		}
 		

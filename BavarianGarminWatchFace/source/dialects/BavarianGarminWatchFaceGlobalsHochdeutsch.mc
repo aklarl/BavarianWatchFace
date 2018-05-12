@@ -21,9 +21,9 @@
 using Toybox.Graphics as Graphics;
 
 // language variables
-var minutesWhenToJumpToNextHour = 23;
+var minutesWhenToJumpToNextHourHochdeutsch = 23;
 
-var hoursToText = { 
+var hoursToTextHochdeutsch = { 
 	1 =>  "eins", 
 	2 =>  "zwei", 
 	3 =>  "drei", 
@@ -38,7 +38,7 @@ var hoursToText = {
 	0 =>  "zwölf"
 };
 
-var minutesToSeparator = {
+var minutesToSeparatorHochdeutsch = {
 	0 => "",
 	1 => "nach",
 	2 => "nach",
@@ -53,41 +53,17 @@ var minutesToSeparator = {
 	11 => "vor"	
 };
 	
-var minutesToText = {
+var minutesToTextHochdeutsch = {
 	0 =>  "um",
 	1 =>  "fünf",
 	2 =>  "zehn",
-	3 =>  "viertel",
+	3 =>  "viertel", // line 3: 7 characters
 	4 =>  "zwanzig",
 	5 =>  "fünf",
 	6 =>  "halb",
 	7 =>  "fünf",
 	8 =>  "zwanzig",
-	9 =>  "dreiviertel", // 11 characters
+	9 =>  "dreiviertel", // line 2: 11 characters
 	10 => "zehn",
 	11 => "fünf"	
 };
-
-// date variables
-var showDate = false;
-
-// font variables 
-var fontS = Graphics.FONT_SMALL;
-var fontL = Graphics.FONT_LARGE;
-var fontSigns = Graphics.FONT_TINY;
-var fontNumbers = Graphics.FONT_XTINY;
-
-// color variables
-var backgroundColor = Graphics.COLOR_BLACK;
-var minutesColor = Graphics.COLOR_WHITE;
-var hoursColor = Graphics.COLOR_RED;
-
-var unactiveDotColor = Graphics.COLOR_WHITE;
-var activeDotColor = Graphics.COLOR_RED;
-
-// formatting variables
-var justification = Graphics.TEXT_JUSTIFY_CENTER;
-	
-var dotRadius = 3;
-var dotDistance = 2*dotRadius + 10;
-var dotY = 32;

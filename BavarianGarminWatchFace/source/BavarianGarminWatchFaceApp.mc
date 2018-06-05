@@ -80,12 +80,18 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 				minutesToText = minutesToTextKaernten;
 				break;
 			case 4:
+				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourTirolerischWattensSchwaz;
+				hoursToText = hoursToTextTirolerischWattensSchwaz;
+				minutesToSeparator = minutesToSeparatorTirolerischWattensSchwaz;
+				minutesToText = minutesToTextTirolerischWattensSchwaz;
+				break;
+			case 5:
 				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourSchweizZurich;
 				hoursToText = hoursToTextSchweizZurich;
 				minutesToSeparator = minutesToSeparatorSchweizZurich;
 				minutesToText = minutesToTextSchweizZurich;
 				break;
-			case 5:
+			case 6:
 				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourSchweizOlten;
 				hoursToText = hoursToTextSchweizOlten;
 				minutesToSeparator = minutesToSeparatorSchweizOlten;

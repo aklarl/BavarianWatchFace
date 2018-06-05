@@ -18,52 +18,49 @@
  *
  */
 
-using Toybox.Graphics as Graphics;
+var minutesWhenToJumpToNextHourTirolerischWattensSchwaz = 18;
 
-// language variables
-var minutesWhenToJumpToNextHourHochdeutsch = 23;
-
-var hoursToTextHochdeutsch = { 
-	1 =>  "eins", 
-	2 =>  "zwei", 
+var hoursToTextTirolerischWattensSchwaz = { 
+	1 =>  "oans", 
+	2 =>  "zwoa", 
 	3 =>  "drei", 
-	4 =>  "vier",
-	5 =>  "fünf",
-	6 =>  "sechs",
-	7 =>  "sieben", // 6 characters
-	8 =>  "acht",
-	9 =>  "neun",
-	10 => "zehn",
-	11 => "elf",
-	0 =>  "zwölf"
+	4 =>  "viere",
+	5 =>  "fünfe",
+	6 =>  "seggse",
+	7 =>  "siemne", // 6 characters
+	8 =>  "achte",
+	9 =>  "neine",
+	10 => "zehne",
+	11 => "elfe",
+	0 =>  "zwölfe"
 };
 
-var minutesToSeparatorHochdeutsch = {
+var minutesToSeparatorTirolerischWattensSchwaz = {
 	0 => "",
-	1 => "nach",
-	2 => "nach",
-	3 => "nach",
-	4 => "nach",
-	5 => "vor halb",
+	1 => "noch",
+	2 => "noch",
+	3 => "noch",
+	4 => "voa holbe",
+	5 => "voa holbe",
 	6 => "",
-	7 => "nach halb", // 9 characters
-	8 => "vor",
-	9 => "vor",
-	10 => "vor",
-	11 => "vor"	
+	7 => "noch holbe", // 10 characters
+	8 => "noch holbe",
+	9 => "",
+	10 => "voa",
+	11 => "voa"	
 };
 	
-var minutesToTextHochdeutsch = {
-	0 =>  "um",
+var minutesToTextTirolerischWattensSchwaz = {
+	0 =>  "",
 	1 =>  "fünf",
 	2 =>  "zehn",
-	3 =>  "viertel", // line 3: 7 characters
-	4 =>  "zwanzig",
+	3 =>  "viatl", // line 3: 5 characters
+	4 =>  "zehn",
 	5 =>  "fünf",
-	6 =>  "halb", // line 2: 4 characters
+	6 =>  "holba",
 	7 =>  "fünf",
-	8 =>  "zwanzig",
-	9 =>  "viertel",
+	8 =>  "zehn",
+	9 =>  "dreiviatl", // line 2: 9 characters
 	10 => "zehn",
 	11 => "fünf"	
 };

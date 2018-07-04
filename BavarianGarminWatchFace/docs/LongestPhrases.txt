@@ -1,0 +1,3 @@
+line 1 (minutes): 10 with 2 lines, 7 with 3 lines
+line 2 (separator): 10
+line 3 (hours): 7

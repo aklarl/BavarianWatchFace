@@ -55,12 +55,12 @@ var minutesToTextBayern = {
 	1 =>  "fimf",
 	2 =>  "zehn",
 	3 =>  "viadl",
-	4 =>  "zwanzg", // line 3: 6 characters
+	4 =>  "zwanzg", // 3 lines: 6 characters
 	5 =>  "fimf",
 	6 =>  "hoiba",
 	7 =>  "fimf",
 	8 =>  "zwanzg",
-	9 =>  "dreiviadl", // line 2: 9 characters
+	9 =>  "dreiviadl", // 2 lines: 9 characters
 	10 => "zehn",
 	11 => "fimf"	
 };

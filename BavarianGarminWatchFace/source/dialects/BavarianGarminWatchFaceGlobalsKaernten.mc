@@ -54,13 +54,13 @@ var minutesToTextKaernten = {
 	0 =>  "",
 	1 =>  "fünf",
 	2 =>  "zehn",
-	3 =>  "viertl", // line 3: 6 characters
+	3 =>  "viertl", // 3 lines: 6 characters
 	4 =>  "zehn",
 	5 =>  "fünf",
 	6 =>  "hålba",
 	7 =>  "fünf",
 	8 =>  "zehn",
-	9 =>  "dreiviertl", // line 2: 10 characters
+	9 =>  "dreiviertl", // 2 lines: 10 characters
 	10 => "zehn",
 	11 => "fünf"	
 };

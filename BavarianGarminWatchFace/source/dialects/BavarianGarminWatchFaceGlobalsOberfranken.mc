@@ -52,7 +52,7 @@ var minutesToSeparatorOberfranken = {
 	
 var minutesToTextOberfranken = {
 	0 =>  "",
-	1 =>  "fimf", // line 3: 4 characters
+	1 =>  "fimf", // 3 lines: 4 characters
 	2 =>  "zehn",
 	3 =>  "värddl",
 	4 =>  "zehn",
@@ -60,7 +60,7 @@ var minutesToTextOberfranken = {
 	6 =>  "holba",
 	7 =>  "fimf",
 	8 =>  "zehn",
-	9 =>  "dreivärddl", // line 2: 10 characters
+	9 =>  "dreivärddl", // 2 lines: 10 characters
 	10 => "zehn",
 	11 => "fimf"	
 };

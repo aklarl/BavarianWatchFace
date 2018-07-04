@@ -18,9 +18,6 @@
  *
  */
 
-using Toybox.Graphics as Graphics;
-
-// language variables
 var minutesWhenToJumpToNextHourHochdeutsch = 23;
 
 var hoursToTextHochdeutsch = { 
@@ -57,10 +54,10 @@ var minutesToTextHochdeutsch = {
 	0 =>  "um",
 	1 =>  "fünf",
 	2 =>  "zehn",
-	3 =>  "viertel", // line 3: 7 characters
+	3 =>  "viertel", // 3 lines: 7 characters
 	4 =>  "zwanzig",
 	5 =>  "fünf",
-	6 =>  "halb", // line 2: 4 characters
+	6 =>  "halb", // 2 lines: 4 characters
 	7 =>  "fünf",
 	8 =>  "zwanzig",
 	9 =>  "viertel",

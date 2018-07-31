@@ -9,6 +9,7 @@
             <listEntry value="5">@Strings.Language5</listEntry>
             <listEntry value="6">@Strings.Language6</listEntry>
             <listEntry value="7">@Strings.Language7</listEntry>
+            <listEntry value="8">@Strings.Language8</listEntry>
             <listEntry value="0">@Strings.Language0</listEntry>
         </settingConfig>
     </setting>

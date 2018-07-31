@@ -64,11 +64,13 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 			case 5: language = WatchUi.loadResource(Rez.Strings.Language5); break;
 			case 6: language = WatchUi.loadResource(Rez.Strings.Language6); break;
 			case 7: language = WatchUi.loadResource(Rez.Strings.Language7); break;
+			case 8: language = WatchUi.loadResource(Rez.Strings.Language8); break;
 			default: language = WatchUi.loadResource(Rez.Strings.Language0); break;
 		}
 		
 		if (language.equals("Hochdeutsch")) { Hochdeutsch.updateDictionaries(); }
 		else if (language.equals("Boarisch")) { Oberbayern.updateDictionaries(); }
+		else if (language.equals("Schwäbisch")) { Schwaben.updateDictionaries(); }
 		else if (language.equals("Oberfrängisch")) { Oberfranken.updateDictionaries(); }
 		else if (language.equals("Kärtnerisch")) { Kaernten.updateDictionaries(); }
 		else if (language.equals("Tirolerisch (Wattens Schwaz)")) { TirolerischWattensSchwaz.updateDictionaries(); }

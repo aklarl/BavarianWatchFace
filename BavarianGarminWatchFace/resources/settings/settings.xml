@@ -2,13 +2,13 @@
 
     <setting propertyKey="@Properties.Language" title="@Strings.LanguageTitle">
         <settingConfig type="list">
-            <listEntry value="1">@Strings.Bayern</listEntry>
-            <listEntry value="2">@Strings.Oberfranken</listEntry>
-            <listEntry value="3">@Strings.Kaernten</listEntry>
-            <listEntry value="4">@Strings.TirolerischWattensSchwaz</listEntry>
-            <listEntry value="5">@Strings.SchweizZurich</listEntry>
-            <listEntry value="6">@Strings.SchweizOlten</listEntry>
-            <listEntry value="0">@Strings.Hochdeutsch</listEntry>
+            <listEntry value="1">@Strings.Language1</listEntry>
+            <listEntry value="2">@Strings.Language2</listEntry>
+            <listEntry value="3">@Strings.Language3</listEntry>
+            <listEntry value="4">@Strings.Language4</listEntry>
+            <listEntry value="5">@Strings.Language5</listEntry>
+            <listEntry value="6">@Strings.Language6</listEntry>
+            <listEntry value="0">@Strings.Language0</listEntry>
         </settingConfig>
     </setting>
     

@@ -54,50 +54,25 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 
 	static function refreshSettings() {
 		// refresh language
-		switch (getNumberProperty("Language",1)) {
-			case 0:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourHochdeutsch;
-				hoursToText = hoursToTextHochdeutsch;
-				minutesToSeparator = minutesToSeparatorHochdeutsch;
-				minutesToText = minutesToTextHochdeutsch;
-				break;
-			case 1:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourBayern;
-				hoursToText = hoursToTextBayern;
-				minutesToSeparator = minutesToSeparatorBayern;
-				minutesToText = minutesToTextBayern;
-				break;
-			case 2:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourOberfranken;
-				hoursToText = hoursToTextOberfranken;
-				minutesToSeparator = minutesToSeparatorOberfranken;
-				minutesToText = minutesToTextOberfranken;
-				break;
-			case 3:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourKaernten;
-				hoursToText = hoursToTextKaernten;
-				minutesToSeparator = minutesToSeparatorKaernten;
-				minutesToText = minutesToTextKaernten;
-				break;
-			case 4:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourTirolerischWattensSchwaz;
-				hoursToText = hoursToTextTirolerischWattensSchwaz;
-				minutesToSeparator = minutesToSeparatorTirolerischWattensSchwaz;
-				minutesToText = minutesToTextTirolerischWattensSchwaz;
-				break;
-			case 5:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourSchweizZurich;
-				hoursToText = hoursToTextSchweizZurich;
-				minutesToSeparator = minutesToSeparatorSchweizZurich;
-				minutesToText = minutesToTextSchweizZurich;
-				break;
-			case 6:
-				minutesWhenToJumpToNextHour = minutesWhenToJumpToNextHourSchweizOlten;
-				hoursToText = hoursToTextSchweizOlten;
-				minutesToSeparator = minutesToSeparatorSchweizOlten;
-				minutesToText = minutesToTextSchweizOlten;
-				break;
+		var language = "Hochdeutsch";
+		switch (getNumberProperty("Language",0)) {
+			case 0: language = WatchUi.loadResource(Rez.Strings.Language0); break;
+			case 1: language = WatchUi.loadResource(Rez.Strings.Language1); break;
+			case 2: language = WatchUi.loadResource(Rez.Strings.Language2); break;
+			case 3: language = WatchUi.loadResource(Rez.Strings.Language3); break;
+			case 4: language = WatchUi.loadResource(Rez.Strings.Language4); break;
+			case 5: language = WatchUi.loadResource(Rez.Strings.Language5); break;
+			case 6: language = WatchUi.loadResource(Rez.Strings.Language6); break;
 		}
+		
+		if (language.equals("Hochdeutsch")) { Hochdeutsch.updateDictionaries(); }
+		else if (language.equals("Boarisch")) { Oberbayern.updateDictionaries(); }
+		else if (language.equals("Oberfrängisch")) { Oberfranken.updateDictionaries(); }
+		else if (language.equals("Kärtnerisch")) { Kaernten.updateDictionaries(); }
+		else if (language.equals("Tirolerisch (Wattens Schwaz)")) { TirolerischWattensSchwaz.updateDictionaries(); }
+		else if (language.equals("Schweizerisch (Zürich)")) { SchweizZurich.updateDictionaries(); }
+		else if (language.equals("Schweizerisch (Olten)")) { SchweizOlten.updateDictionaries(); }
+		else { Hochdeutsch.updateDictionaries(); }
 		
 		// refresh date
 		showDate = getBooleanProperty("Date",false);
@@ -202,6 +177,23 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 					|| value instanceof Lang.Float
 					|| value instanceof Lang.Long) {
 				return value.toBoolean();
+			}
+		}
+		return defaultValue;
+	}
+	
+	private static function getStringProperty(property, defaultValue) {
+		var value = Application.getApp().getProperty(property);
+		if (value != null) {
+			if (value instanceof Lang.String) {
+				return value;
+			}
+			else if (value instanceof Lang.Boolean
+					|| value instanceof Lang.Number
+					|| value instanceof Lang.Double
+					|| value instanceof Lang.Float
+					|| value instanceof Lang.Long) {
+				return value.toString();
 			}
 		}
 		return defaultValue;

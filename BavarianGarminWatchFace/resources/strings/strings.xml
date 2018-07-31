@@ -1,5 +1,4 @@
 <strings>
-
     <string id="AppName">BoarischesWatchFace</string>
 
     <string id="LanguageTitle">Sprache</string>
@@ -7,13 +6,13 @@
     <string id="FontTitle">Schriftart</string>
     <string id="HighlightColorTitle">Akzentfarbe</string>
 
-	<string id="Bayern">Boarisch</string>
-	<string id="Oberfranken">Oberfrängisch</string>
-	<string id="Kaernten">Kärtnerisch</string>
-	<string id="TirolerischWattensSchwaz">Tirolerisch (Wattens Schwaz)</string>
-	<string id="SchweizZurich">Schweizerisch (Zürich)</string>
-	<string id="SchweizOlten">Schweizerisch (Olten)</string>
-	<string id="Hochdeutsch">Hochdeutsch</string>
+	<string id="Language1">Boarisch</string>
+	<string id="Language2">Oberfrängisch</string>
+	<string id="Language3">Kärtnerisch</string>
+	<string id="Language4">Tirolerisch (Wattens Schwaz)</string>
+	<string id="Language5">Schweizerisch (Zürich)</string>
+	<string id="Language6">Schweizerisch (Olten)</string>
+	<string id="Language0">Hochdeutsch</string>
 
 	<string id="Font1">Bauhaus93</string>
 	<string id="Font2">Britannic</string>

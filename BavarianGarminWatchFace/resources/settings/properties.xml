@@ -1,8 +1,6 @@
 <properties>
-
     <property id="Language" type="number">1</property>
     <property id="Date" type="boolean">false</property>
 	<property id="Font" type="number">2</property>
     <property id="HighlightColor" type="number">1</property>
-
 </properties>

@@ -11,6 +11,7 @@
             <listEntry value="7">@Strings.Language7</listEntry>
             <listEntry value="8">@Strings.Language8</listEntry>
             <listEntry value="9">@Strings.Language9</listEntry>
+            <listEntry value="10">@Strings.Language10</listEntry>
             <listEntry value="0">@Strings.Language0</listEntry>
         </settingConfig>
     </setting>

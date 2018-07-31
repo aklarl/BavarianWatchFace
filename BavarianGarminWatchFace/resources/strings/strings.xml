@@ -9,12 +9,13 @@
 	<string id="Language1">Boarisch</string>
 	<string id="Language2">Schwäbisch</string>
 	<string id="Language3">Oberfrängisch</string>
-	<string id="Language4">Sächsisch</string>
-	<string id="Language5">Kärtnerisch</string>
-	<string id="Language6">Tirolerisch (Wattens Schwaz)</string>
-	<string id="Language7">Niederösterreichisch</string>
-	<string id="Language8">Schweizerisch (Zürich)</string>
-	<string id="Language9">Schweizerisch (Olten)</string>
+	<string id="Language4">Mittelfrängisch</string>
+	<string id="Language5">Sächsisch</string>
+	<string id="Language6">Kärtnerisch</string>
+	<string id="Language7">Tirolerisch (Wattens Schwaz)</string>
+	<string id="Language8">Niederösterreichisch</string>
+	<string id="Language9">Schweizerisch (Zürich)</string>
+	<string id="Language10">Schweizerisch (Olten)</string>
 	<string id="Language0">Hochdeutsch</string>
 
 	<string id="Font1">Bauhaus93</string>

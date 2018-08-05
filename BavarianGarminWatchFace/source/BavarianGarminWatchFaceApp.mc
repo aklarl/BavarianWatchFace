@@ -53,6 +53,8 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
     }
 
 	static function refreshSettings() {
+		setHoursCenteredToDefault();
+	
 		// refresh language
 		var language = "Hochdeutsch";
 		switch (getNumberProperty("Language",0)) {
@@ -67,6 +69,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 			case 8: language = WatchUi.loadResource(Rez.Strings.Language8); break;
 			case 9: language = WatchUi.loadResource(Rez.Strings.Language9); break;
 			case 10: language = WatchUi.loadResource(Rez.Strings.Language10); break;
+			case 11: language = WatchUi.loadResource(Rez.Strings.Language11); break;
 			default: language = WatchUi.loadResource(Rez.Strings.Language0); break;
 		}
 		
@@ -76,6 +79,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 		else if (language.equals("Oberfrängisch")) { Oberfranken.updateDictionaries(); }
 		else if (language.equals("Mittelfrängisch")) { Mittelfranken.updateDictionaries(); }
 		else if (language.equals("Sächsisch")) { Sachsen.updateDictionaries(); }
+		else if (language.equals("Aarzgebirgsch")) { Erzgebirge.updateDictionaries(); }
 		else if (language.equals("Kärtnerisch")) { Kaernten.updateDictionaries(); }
 		else if (language.equals("Tirolerisch (Wattens Schwaz)")) { TirolerischWattensSchwaz.updateDictionaries(); }
 		else if (language.equals("Niederösterreichisch")) { Niederosterreich.updateDictionaries(); }

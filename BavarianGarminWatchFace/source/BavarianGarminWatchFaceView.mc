@@ -49,7 +49,7 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
         var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
        	var hours = today.hour;
 	    var minutes = today.min;
-
+	    
 	    // get date
 	    var dateOutput = Lang.format(
 				"$1$.$2$.$3$",
@@ -57,7 +57,8 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 			);
 	    
         // get text for minutes
-        var minutesOutput = minutesToText[ ( (minutes+2)%60 ) /5 ].toUpper();
+        var minutesIndex = ( (minutes+2)%60 ) /5;
+        var minutesOutput = minutesToText[ minutesIndex ].toUpper();
         
         // get text for separator
         var separatorOutput = minutesToSeparator[ ( (minutes+2)%60 ) /5 ].toUpper();
@@ -75,30 +76,53 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 		// compute offsets for text
 		var ascentS = dc.getFontAscent(fontS);
 		var descentS = dc.getFontDescent(fontS);
+		var ascentL = dc.getFontAscent(fontL);
 		var descentL = dc.getFontDescent(fontL);
 		var textHeightS = ascentS - descentS;
+		var textHeightL = ascentL - descentL;
 		
 		var offsetSeparator = 0;
 		var offsetMinutes = 0;
 		var offsetHours = 0;
-		if (!separatorOutput.equals("")) {
-			offsetSeparator = descentS + textHeightS/2;
-			offsetMinutes = textHeightS + 10;
-			offsetHours = ascentS - descentL + 14;
+		if (!minutesOutput.equals("") && !separatorOutput.equals("")) {
+			offsetMinutes = -textHeightS - 10;
+			if (hoursCentered[minutesIndex]) {
+				offsetHours -= descentL + textHeightL/2;
+				offsetMinutes += offsetHours;
+				offsetSeparator = ascentL - descentS + 14;
+				offsetSeparator += offsetHours;
+			}
+			else {
+				offsetSeparator -= descentS + textHeightS/2;
+				offsetMinutes += offsetSeparator;
+				offsetHours = ascentS - descentL + 14;
+				offsetHours += offsetSeparator;
+			}
 		}
-		else {
+		else if (!minutesOutput.equals("") && separatorOutput.equals("")) {
 			offsetSeparator = 0;
-			offsetMinutes = ascentS + 4;
-			offsetHours = -descentL + 6;
+			if (hoursCentered[minutesIndex]) {
+				offsetMinutes += -descentS + 6;
+				offsetHours -= ascentL + 4;
+			}
+			else {
+				offsetMinutes -= ascentS + 4;
+				offsetHours += -descentL + 6;
+			}
 		}
-	
+		else if (minutesOutput.equals("") && separatorOutput.equals("")) {
+			offsetMinutes = 0;
+			offsetSeparator = 0;
+			offsetHours -= descentL + textHeightL/2;
+		}
+		
 		// set time
 		dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
-		dc.drawText(me.xcenter, me.ycenter - offsetSeparator - offsetMinutes, fontS, minutesOutput, justification);
-		dc.drawText(me.xcenter, me.ycenter - offsetSeparator    , fontS, separatorOutput, justification);		
+		dc.drawText(me.xcenter, me.ycenter + offsetMinutes, fontS, minutesOutput, justification);
+		dc.drawText(me.xcenter, me.ycenter + offsetSeparator    , fontS, separatorOutput, justification);		
 	
 		dc.setColor(hoursColor, Graphics.COLOR_TRANSPARENT);		
-		dc.drawText(me.xcenter, me.ycenter - offsetSeparator + offsetHours, fontL, hoursOutput, justification);
+		dc.drawText(me.xcenter, me.ycenter + offsetHours, fontL, hoursOutput, justification);
 		
 		// set exact minutes
 		dotY = dc.getHeight() * 0.13;
@@ -132,8 +156,8 @@ class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
 		// set date
 		if (showDate) {
 			var dateY = dc.getHeight() - dotY - (dc.getFontAscent(fontNumbers)-dc.getFontDescent(fontNumbers))/2;
-			if (dateY - (me.ycenter - offsetSeparator + offsetHours) < 56) { 
-				dateY = (me.ycenter - offsetSeparator + offsetHours) + 56;
+			if (dateY - (me.ycenter + offsetHours) < 56) { 
+				dateY = (me.ycenter + offsetHours) + 56;
 			}
 			dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
 			dc.drawText(me.xcenter, dateY, fontNumbers, dateOutput, justification);

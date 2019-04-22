@@ -1,3 +1,3 @@
-line 1 (minutes): 11 with 2 lines (Schwaben), 8 with 3 lines (Schwaben)
-line 2 (separator): 11 (Schwaben)
-line 3 (hours): 7 (Schwaben)
+line 1 (minutes): 11 with 2 lines (Schwaben: "dreiviertel (45)"), 8 with 3 lines (Schwaben: "femf vor (40)")
+line 2 (separator): 11 (Schwaben: "dreiviertel (45)")
+line 3 (hours): 7 (Schwaben: "siebene (7)")

@@ -20,7 +20,7 @@
 
 class Erzgebirge {
 	public static function updateDictionaries() {
-		minutesWhenToJumpToNextHour = 18;
+		minutesWhenToJumpToNextHour = 13;
 		
 		hoursCentered = {
 			0 =>  false,

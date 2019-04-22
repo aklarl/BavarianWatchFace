@@ -189,7 +189,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 					|| value instanceof Lang.Double
 					|| value instanceof Lang.Float
 					|| value instanceof Lang.Long) {
-				return value.toBoolean();
+				return value;
 			}
 		}
 		return defaultValue;

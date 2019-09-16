@@ -54,6 +54,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 
 	static function refreshSettings() {
 		setHoursCenteredToDefault();
+		
 	
 		// refresh language
 		var language = "Hochdeutsch";
@@ -70,21 +71,29 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
 			case 9: language = WatchUi.loadResource(Rez.Strings.Language9); break;
 			case 10: language = WatchUi.loadResource(Rez.Strings.Language10); break;
 			case 11: language = WatchUi.loadResource(Rez.Strings.Language11); break;
+			case 12: language = WatchUi.loadResource(Rez.Strings.Language12); break;
+			case 13: language = WatchUi.loadResource(Rez.Strings.Language13); break;
+			case 14: language = WatchUi.loadResource(Rez.Strings.Language14); break;
+			case 15: language = WatchUi.loadResource(Rez.Strings.Language15); break;
 			default: language = WatchUi.loadResource(Rez.Strings.Language0); break;
 		}
 		
 		if (language.equals("Hochdeutsch")) { Hochdeutsch.updateDictionaries(); }
-		else if (language.equals("Boarisch")) { Oberbayern.updateDictionaries(); }
-		else if (language.equals("Schwäbisch")) { Schwaben.updateDictionaries(); }
-		else if (language.equals("Oberfrängisch")) { Oberfranken.updateDictionaries(); }
-		else if (language.equals("Mittelfrängisch")) { Mittelfranken.updateDictionaries(); }
-		else if (language.equals("Sächsisch")) { Sachsen.updateDictionaries(); }
 		else if (language.equals("Aarzgebirgsch")) { Erzgebirge.updateDictionaries(); }
+		else if (language.equals("Berlinerisch")) { Berlin.updateDictionaries(); }
+		else if (language.equals("Boarisch")) { Oberbayern.updateDictionaries(); }
+		else if (language.equals("Mittelfrängisch")) { Mittelfranken.updateDictionaries(); }
+		else if (language.equals("Hessisch")) { Hessen.updateDictionaries(); }
 		else if (language.equals("Kärtnerisch")) { Kaernten.updateDictionaries(); }
-		else if (language.equals("Tirolerisch (Wattens Schwaz)")) { TirolerischWattensSchwaz.updateDictionaries(); }
 		else if (language.equals("Niederösterreichisch")) { Niederosterreich.updateDictionaries(); }
-		else if (language.equals("Schweizerisch (Zürich)")) { SchweizZurich.updateDictionaries(); }
+		else if (language.equals("Oberfrängisch")) { Oberfranken.updateDictionaries(); }
+		else if (language.equals("Sächsisch")) { Sachsen.updateDictionaries(); }
+		else if (language.equals("Schwäbisch")) { Schwaben.updateDictionaries(); }
+		else if (language.equals("Schweizerisch (Bern)")) { SchweizBern.updateDictionaries(); }
 		else if (language.equals("Schweizerisch (Olten)")) { SchweizOlten.updateDictionaries(); }
+		else if (language.equals("Schweizerisch (St. Gallen)")) { SchweizStGallen.updateDictionaries(); }
+		else if (language.equals("Schweizerisch (Zürich)")) { SchweizZurich.updateDictionaries(); }
+		else if (language.equals("Tirolerisch (Wattens Schwaz)")) { TirolerischWattensSchwaz.updateDictionaries(); }
 		else { Hochdeutsch.updateDictionaries(); }
 		
 		// refresh date

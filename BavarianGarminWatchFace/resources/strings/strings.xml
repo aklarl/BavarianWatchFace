@@ -6,17 +6,21 @@
     <string id="FontTitle">Schriftart</string>
     <string id="HighlightColorTitle">Akzentfarbe</string>
 
-	<string id="Language1">Boarisch</string>
-	<string id="Language2">Schwäbisch</string>
-	<string id="Language3">Oberfrängisch</string>
-	<string id="Language4">Mittelfrängisch</string>
-	<string id="Language5">Sächsisch</string>
-	<string id="Language6">Aarzgebirgsch</string>
-	<string id="Language7">Kärtnerisch</string>
-	<string id="Language8">Tirolerisch (Wattens Schwaz)</string>
-	<string id="Language9">Niederösterreichisch</string>
-	<string id="Language10">Schweizerisch (Zürich)</string>
-	<string id="Language11">Schweizerisch (Olten)</string>
+	<string id="Language1">Aarzgebirgsch</string>
+	<string id="Language2">Berlinerisch</string>
+	<string id="Language3">Boarisch</string>
+	<string id="Language4">Hessisch</string>
+	<string id="Language5">Kärtnerisch</string>
+	<string id="Language6">Mittelfrängisch</string>
+	<string id="Language7">Niederösterreichisch</string>
+	<string id="Language8">Oberfrängisch</string>
+	<string id="Language9">Sächsisch</string>
+	<string id="Language10">Schwäbisch</string>
+	<string id="Language11">Schweizerisch (Bern)</string>
+	<string id="Language12">Schweizerisch (Olten)</string>
+	<string id="Language13">Schweizerisch (St. Gallen)</string>
+	<string id="Language14">Schweizerisch (Zürich)</string>
+	<string id="Language15">Tirolerisch (Wattens Schwaz)</string>
 	<string id="Language0">Hochdeutsch</string>
 
 	<string id="Font1">Bauhaus93</string>

@@ -42,11 +42,11 @@ class Berlin {
 			1 => "na",
 			2 => "na",
 			3 => "",
-			4 => "vor",
+			4 => "vor halb",
 			5 => "vor halb",
 			6 => "",
 			7 => "na halb", // 7 characters
-			8 => "na",
+			8 => "na halb",
 			9 => "",
 			10 => "vor",
 			11 => "vor"	

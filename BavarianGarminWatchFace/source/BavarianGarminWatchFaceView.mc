@@ -26,141 +26,194 @@ using Toybox.Application as App;
 using Toybox.Time as Time;
 
 class BavarianGarminWatchFaceView extends WatchUi.WatchFace {
+  var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
+  var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
 
-	var xcenter = WatchUi.LAYOUT_HALIGN_CENTER;
-	var ycenter = WatchUi.LAYOUT_VALIGN_CENTER;
+  function initialize() {
+    WatchFace.initialize();
+  }
 
-    function initialize() {
-        WatchFace.initialize();
+  // load resources
+  function onLayout(dc) {
+    BavarianGarminWatchFaceApp.refreshSettings();
+
+    me.xcenter = dc.getWidth() / 2;
+    me.ycenter = dc.getHeight() / 2;
+  }
+
+  // update the view
+  function onUpdate(dc) {
+    // get the current time
+    var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+    var hours = today.hour;
+    var minutes = today.min;
+
+    // get date
+    var dateOutput = Lang.format("$1$.$2$.$3$", [
+      today.day.format("%02d"),
+      today.month.format("%02d"),
+      (today.year % 100).format("%02d"),
+    ]);
+
+    // get text for minutes
+    var minutesIndex = ((minutes + 2) % 60) / 5;
+    var minutesOutput = minutesToText[minutesIndex].toUpper();
+
+    // get text for separator
+    var separatorOutput =
+      minutesToSeparator[((minutes + 2) % 60) / 5].toUpper();
+
+    // get text for hours
+    var hoursOutput = "";
+    if (minutes < minutesWhenToJumpToNextHour) {
+      hoursOutput = hoursToText[hours % 12];
+    } else {
+      hoursOutput = hoursToText[(hours + 1) % 12];
+    }
+    hoursOutput = hoursOutput.toUpper();
+
+    // set background color
+    dc.setColor(backgroundColor, backgroundColor);
+    dc.clear();
+
+    // compute offsets for text
+    var ascentS = Graphics.getFontAscent(fontS);
+    var descentS = Graphics.getFontDescent(fontS);
+    var ascentL = Graphics.getFontAscent(fontL);
+    var descentL = Graphics.getFontDescent(fontL);
+    var textHeightS = ascentS - descentS;
+    var textHeightL = ascentL - descentL;
+
+    var offsetSeparator = 0;
+    var offsetMinutes = 0;
+    var offsetHours = 0;
+    if (!minutesOutput.equals("") && !separatorOutput.equals("")) {
+      offsetMinutes = -textHeightS - 10;
+      if (hoursCentered[minutesIndex]) {
+        offsetHours -= descentL + textHeightL / 2;
+        offsetMinutes += offsetHours;
+        offsetSeparator = ascentL - descentS + 14;
+        offsetSeparator += offsetHours;
+      } else {
+        offsetSeparator -= descentS + textHeightS / 2;
+        offsetMinutes += offsetSeparator;
+        offsetHours = ascentS - descentL + 14;
+        offsetHours += offsetSeparator;
+      }
+    } else if (!minutesOutput.equals("") && separatorOutput.equals("")) {
+      offsetSeparator = 0;
+      if (hoursCentered[minutesIndex]) {
+        offsetMinutes += -descentS + 6;
+        offsetHours -= ascentL + 4;
+      } else {
+        offsetMinutes -= ascentS + 4;
+        offsetHours += -descentL + 6;
+      }
+    } else if (minutesOutput.equals("") && separatorOutput.equals("")) {
+      offsetMinutes = 0;
+      offsetSeparator = 0;
+      offsetHours -= descentL + textHeightL / 2;
     }
 
-    // load resources
-    function onLayout(dc) {
-    	BavarianGarminWatchFaceApp.refreshSettings();
-    
-        me.xcenter = dc.getWidth()/2;
-        me.ycenter = dc.getHeight()/2;
-    }
+    // set time
+    dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
+    dc.drawText(
+      me.xcenter,
+      me.ycenter + offsetMinutes,
+      fontS,
+      minutesOutput,
+      justification
+    );
+    dc.drawText(
+      me.xcenter,
+      me.ycenter + offsetSeparator,
+      fontS,
+      separatorOutput,
+      justification
+    );
 
-    // update the view
-    function onUpdate(dc) {
-    
-		// get the current time
-        var today = Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-       	var hours = today.hour;
-	    var minutes = today.min;
-	    
-	    // get date
-	    var dateOutput = Lang.format(
-				"$1$.$2$.$3$",
-				[today.day.format("%02d"), today.month.format("%02d"), (today.year % 100).format("%02d")]
-			);
-	    
-        // get text for minutes
-        var minutesIndex = ( (minutes+2)%60 ) /5;
-        var minutesOutput = minutesToText[ minutesIndex ].toUpper();
-        
-        // get text for separator
-        var separatorOutput = minutesToSeparator[ ( (minutes+2)%60 ) /5 ].toUpper();
-        
-        // get text for hours        
-	    var hoursOutput = "";
-        if (minutes < minutesWhenToJumpToNextHour) { hoursOutput = hoursToText[hours % 12]; }
-        else { hoursOutput = hoursToText[(hours + 1) % 12]; }
-        hoursOutput = hoursOutput.toUpper();
-        
-   		// set background color
-		dc.setColor(backgroundColor, backgroundColor);
-		dc.clear();
+    dc.setColor(hoursColor, Graphics.COLOR_TRANSPARENT);
+    dc.drawText(
+      me.xcenter,
+      me.ycenter + offsetHours,
+      fontL,
+      hoursOutput,
+      justification
+    );
 
-		// compute offsets for text
-		var ascentS = dc.getFontAscent(fontS);
-		var descentS = dc.getFontDescent(fontS);
-		var ascentL = dc.getFontAscent(fontL);
-		var descentL = dc.getFontDescent(fontL);
-		var textHeightS = ascentS - descentS;
-		var textHeightL = ascentL - descentL;
-		
-		var offsetSeparator = 0;
-		var offsetMinutes = 0;
-		var offsetHours = 0;
-		if (!minutesOutput.equals("") && !separatorOutput.equals("")) {
-			offsetMinutes = -textHeightS - 10;
-			if (hoursCentered[minutesIndex]) {
-				offsetHours -= descentL + textHeightL/2;
-				offsetMinutes += offsetHours;
-				offsetSeparator = ascentL - descentS + 14;
-				offsetSeparator += offsetHours;
-			}
-			else {
-				offsetSeparator -= descentS + textHeightS/2;
-				offsetMinutes += offsetSeparator;
-				offsetHours = ascentS - descentL + 14;
-				offsetHours += offsetSeparator;
-			}
-		}
-		else if (!minutesOutput.equals("") && separatorOutput.equals("")) {
-			offsetSeparator = 0;
-			if (hoursCentered[minutesIndex]) {
-				offsetMinutes += -descentS + 6;
-				offsetHours -= ascentL + 4;
-			}
-			else {
-				offsetMinutes -= ascentS + 4;
-				offsetHours += -descentL + 6;
-			}
-		}
-		else if (minutesOutput.equals("") && separatorOutput.equals("")) {
-			offsetMinutes = 0;
-			offsetSeparator = 0;
-			offsetHours -= descentL + textHeightL/2;
-		}
-		
-		// set time
-		dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
-		dc.drawText(me.xcenter, me.ycenter + offsetMinutes, fontS, minutesOutput, justification);
-		dc.drawText(me.xcenter, me.ycenter + offsetSeparator    , fontS, separatorOutput, justification);		
-	
-		dc.setColor(hoursColor, Graphics.COLOR_TRANSPARENT);		
-		dc.drawText(me.xcenter, me.ycenter + offsetHours, fontL, hoursOutput, justification);
-		
-		// set exact minutes
-		dotY = dc.getHeight() * 0.13;
-		var minute = (minutes+2)%60 %5;
-		var textY = dotY - dc.getFontDescent(fontSigns) - (dc.getFontAscent(fontSigns)-dc.getFontDescent(fontSigns))/2;
-		
-		if (minute == 0) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
-		dc.drawText(me.xcenter - 2*dotDistance, textY, fontSigns, "-", justification);
-		//dc.fillCircle(me.xcenter - 2*dotDistance, dotY, dotRadius);
-		
-		if (minute == 1) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
-		dc.drawText(me.xcenter - dotDistance, textY, fontSigns, "-", justification);
-		//dc.fillCircle(me.xcenter - dotDistance, dotY, dotRadius);
-		
-		if (minute == 2) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
-		dc.fillCircle(me.xcenter, dotY, dotRadius);
-		
-		if (minute == 3) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); } 
-		dc.drawText(me.xcenter + dotDistance, textY, fontSigns, "+", justification);
-		//dc.fillCircle(me.xcenter + dotDistance, dotY, dotRadius);
-		
-		if (minute == 4) { dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT); }
-		else { dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT); }
-		dc.drawText(me.xcenter + 2*dotDistance, textY, fontSigns, "+", justification);
-		//dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
-		
-		// set date
-		if (showDate) {
-			var dateY = dc.getHeight() - dotY - (dc.getFontAscent(fontNumbers)-dc.getFontDescent(fontNumbers))/2;
-			if (dateY - (me.ycenter + offsetHours) < 56) { 
-				dateY = (me.ycenter + offsetHours) + 56;
-			}
-			dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
-			dc.drawText(me.xcenter, dateY, fontNumbers, dateOutput, justification);
-		}
+    // set exact minutes
+    dotY = dc.getHeight() * 0.13;
+    var minute = ((minutes + 2) % 60) % 5;
+    var textY =
+      dotY -
+      Graphics.getFontDescent(fontSigns) -
+      (Graphics.getFontAscent(fontSigns) - Graphics.getFontDescent(fontSigns)) /
+        2;
+
+    if (minute == 0) {
+      dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT);
+    } else {
+      dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT);
     }
+    dc.drawText(
+      me.xcenter - 2 * dotDistance,
+      textY,
+      fontSigns,
+      "-",
+      justification
+    );
+    //dc.fillCircle(me.xcenter - 2*dotDistance, dotY, dotRadius);
+
+    if (minute == 1) {
+      dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT);
+    } else {
+      dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT);
+    }
+    dc.drawText(me.xcenter - dotDistance, textY, fontSigns, "-", justification);
+    //dc.fillCircle(me.xcenter - dotDistance, dotY, dotRadius);
+
+    if (minute == 2) {
+      dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT);
+    } else {
+      dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT);
+    }
+    dc.fillCircle(me.xcenter, dotY, dotRadius);
+
+    if (minute == 3) {
+      dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT);
+    } else {
+      dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT);
+    }
+    dc.drawText(me.xcenter + dotDistance, textY, fontSigns, "+", justification);
+    //dc.fillCircle(me.xcenter + dotDistance, dotY, dotRadius);
+
+    if (minute == 4) {
+      dc.setColor(activeDotColor, Graphics.COLOR_TRANSPARENT);
+    } else {
+      dc.setColor(unactiveDotColor, Graphics.COLOR_TRANSPARENT);
+    }
+    dc.drawText(
+      me.xcenter + 2 * dotDistance,
+      textY,
+      fontSigns,
+      "+",
+      justification
+    );
+    //dc.fillCircle(me.xcenter + 2*dotDistance, dotY, dotRadius);
+
+    // set date
+    if (showDate) {
+      var dateY =
+        dc.getHeight() -
+        dotY -
+        (Graphics.getFontAscent(fontNumbers) -
+          Graphics.getFontDescent(fontNumbers)) /
+          2;
+      if (dateY - (me.ycenter + offsetHours) < 56) {
+        dateY = me.ycenter + offsetHours + 56;
+      }
+      dc.setColor(minutesColor, Graphics.COLOR_TRANSPARENT);
+      dc.drawText(me.xcenter, dateY, fontNumbers, dateOutput, justification);
+    }
+  }
 }

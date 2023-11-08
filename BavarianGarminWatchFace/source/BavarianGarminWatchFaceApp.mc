@@ -19,7 +19,6 @@
  */
 
 import Toybox.Application;
-import Toybox.Application.Properties;
 import Toybox.WatchUi;
 import Toybox.Graphics;
 import Toybox.Lang;
@@ -227,7 +226,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
     property as Application.PropertyKeyType,
     defaultValue as Lang.Number
   ) as Lang.Number {
-    var value = Properties.getValue(property);
+    var value = Application.getApp().getProperty(property);
     if (value != null) {
       if (value instanceof Lang.Number) {
         return value;
@@ -247,7 +246,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
     property as Application.PropertyKeyType,
     defaultValue as Lang.Boolean
   ) as Lang.Boolean {
-    var value = Properties.getValue(property);
+    var value = Application.getApp().getProperty(property);
     if (value != null) {
       if (value instanceof Lang.Boolean) {
         return value;
@@ -260,7 +259,7 @@ class BavarianGarminWatchFaceApp extends Application.AppBase {
     property as Application.PropertyKeyType,
     defaultValue as Lang.String
   ) as Lang.String {
-    var value = Properties.getValue(property);
+    var value = Application.getApp().getProperty(property);
     if (value != null) {
       if (value instanceof Lang.String) {
         return value;
